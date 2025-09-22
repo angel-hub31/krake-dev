@@ -4,12 +4,11 @@ CalcularValorDescuento=function(monto,porcentajeDescuento){
 }
 calcularIva=function(monto,descuento){
     valorIva=(monto-descuento)*0.12;
-  
+  return valorIva
 
 }
 calcularSubtotal=function(precio,cantidad){
   let totaAPagar=precio*cantidad;
-  totaAPagar=parseFloat(totaAPagar);
   return totaAPagar;
 }
 calcularTotal=function(subtotal,descuento,iva){
