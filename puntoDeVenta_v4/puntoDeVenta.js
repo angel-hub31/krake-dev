@@ -11,11 +11,11 @@ calcularValorTotal = function () {
     let valorIVA;
     let valorTotal;
     //1. Recuperar el nombre del producto como String
-     nombreProducto=mostrarTexto("txtProducto");
+     nombreProducto=recuperarTexto("txtProducto");
     //2. Recuperar el precio como float
-    precioProducto=recuperarFloat("txtCantidad");
+    precioProducto=recuperarFloat("txtPrecio");
     //3. Recuperar cantidad como int
-    cantidad=recuperarInt("txtPrecio");
+    cantidad=recuperarInt("txtCantidad");
     //4. Recuperar el porcentaje de descuento como int
     porcentajeDescuento=recuperarInt("txtPorcentajeDescuento");
 
@@ -34,7 +34,7 @@ calcularValorTotal = function () {
         Si el caso de prueba es exitoso, hacer un commit
      */
     //6. Invocar a calcularValorDescuento y lo que devuelve guardar en la variable valorDescuento
-    calcularValorDescuento(valorSubtotal,porcentajeDescuento);
+    valorDescuento=CalcularValorDescuento(valorSubtotal,porcentajeDescuento);
 
     //7. Mostrar el resultado en el componente lblDescuento
      mostrarTexto("lblDescuento", valorDescuento);

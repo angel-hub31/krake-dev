@@ -1,16 +1,18 @@
-CalcularValorDescuento=function(idComponente,monto,porcentajeDescuento){
+CalcularValorDescuento=function(monto,porcentajeDescuento){
   let valorDescuento=(monto*porcentajeDescuento)/100;
   return valorDescuento;
 }
-calcularIva=function(idComponente,monto){
-    valorIva=(monto*12)/100;
+calcularIva=function(monto,descuento){
+    valorIva=(monto-descuento)*0.12;
+  
 
 }
-calcularSubtotal=function(idComponente,precio,cantidad){
+calcularSubtotal=function(precio,cantidad){
   let totaAPagar=precio*cantidad;
+  totaAPagar=parseFloat(totaAPagar);
   return totaAPagar;
 }
-calcularTotal=function(idComponente,subtotal,descuento,iva){
-  valorTotal=subtotal-descuento+iva;
+calcularTotal=function(subtotal,descuento,iva){
+  valorTotal=(subtotal-descuento)+iva;
   return valorTotal;
 }
