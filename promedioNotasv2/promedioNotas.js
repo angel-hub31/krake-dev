@@ -8,16 +8,16 @@ calcularPromedioNotas=function(){
     mostrarTexto("lblPromedio",resultadoFormateado);
     if(resultadoFormateado<5 && resultadoFormateado>0){
             mostrarTexto("lblMensaje","REPROBADO");
-           
+           cambiarImagen("imgFoto","mal.gif");
     }else if(resultadoFormateado>=5 && resultadoFormateado<=8){
        mostrarTexto("lblMensaje","BUEN TRABAJO");
-
+           cambiarImagen("imgFoto","bien.gif");  
     }else if(resultadoFormateado>8 && resultadoFormateado<=10){
         mostrarTexto("lblMensaje","excelente");
-       
+       cambiarImagen("imgFoto","excelente.gif");  
 
     }else if(resultadoFormateado<=0){
         mostrarTexto("lblMensaje","DATOS INCORRECTOS");
-     
+        cambiarImagen("imgFoto","homero.gif");  
     }
 }
