@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<head>
+
+    <title>Validar Placa</title>
+    <link rel="stylesheet" href="placas.css">
+    <script src="utilitariosCadenas.js" defer></script>
+    <script src="servicioPlacas.js" defer></script>
+    <script src="placas.js" defer></script>
+</head>
+
+<body>
+    <div class="titulo">VALIDAR PLACA</div>
+
+    <div class="contenedor">
+        <div class="areaDatos">
+            <label for="idPlaca">INGRESE LA PLACA: EJEMPLO :PCD-456</label>
+            <div class="form">
+                <input id="idPlaca" type="text" class="cajaTexto" autocomplete="off">
+                <div class="botones">
+                    <button type="button" class="boton" onclick="validarPlaca()">VALIDAR</button>
+                    <button type="button" class="boton" onclick="limpiarDatos()">LIMPIAR</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="areaError">
+            <div>
+                <label>Validez: </label>
+                <label id="lblValida"></label>
+            </div>
+            <div>
+                <label>Vehículo: </label>
+                <label id="lblVehiculo"></label>
+            </div>
+            <div>
+                <label>Provincia: </label>
+                <label id="lblProvincia"></label> 
+            </div>
+            <div>
+                <label>Pico y placa: </label>
+                <label id="lblPicoPlaca"></label>
+            </div>
+            <div>
+                <label></label>
+                <label id="lblErrores"></label>
+            </div>
+        </div>
+
+        </html>

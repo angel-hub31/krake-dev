@@ -1,0 +1,92 @@
+body {
+    background-color: rgb(147, 224, 233);
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.contenedor {
+    background-color: rgb(4, 54, 73);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding: 10px;
+}
+
+.areaDatos {
+    background-color: rgb(171, 175, 172);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 10px;
+    justify-content: left;
+}
+
+.titulo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px;
+    font-size: 30px;
+}
+
+.label {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    margin-right: 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.cajaTexto {
+    border-radius: 5px;
+    border-color: rgb(145, 71, 10);
+    font-size: 20px;
+    justify-content: left;
+}
+
+.boton {
+    border-radius: 5px;
+    display: flex;
+    background-color: rgb(208, 195, 10);
+    color: rgb(13, 9, 9);
+    justify-content: center;
+    padding: 5px;
+    border: rgb(5, 95, 29);
+    margin-top: 10px;
+    width: 100px;
+    border: 2px solid;
+}
+
+.boton:hover {
+    background-color: whitesmoke;
+    color: rgb(4, 105, 26);
+    border: 2px;
+    border-color: rgb(5, 109, 36);
+    border-radius: 5px;
+    width: 100px;
+    border: 2px solid rgb(4, 117, 2);
+}
+
+.areaError {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(175, 171, 171);
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 8px;
+}
