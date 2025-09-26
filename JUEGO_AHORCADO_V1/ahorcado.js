@@ -37,3 +37,29 @@ mostrarLetra=function(letra,posicion){
     mostrarTexto(cmpDiv,letra);
 
 }
+validar=function(){
+    let letrasEncontradas=0;
+    let intentos=0;
+    let coincidencias=0;
+    let errores=0;
+    letrasEncontradas=false;
+    let caracter;
+    for(let i=0; i<palabraSecreta.length;i++){
+        caracter=palabraSecreta.charAt(i);
+        if(letra==caracter){
+            mostrarLetra(letra,i);
+            letrasEncontradas +=1;
+            coincidencias +=1;
+            letrasEncontradas=true;
+
+        }
+
+    }
+    if(!letrasEncontradas){
+        alert("la letra no es parrte de la palabra");
+        errores +=1;
+        mostrarAhorcado();
+
+    }
+    intentos +=1;
+}
