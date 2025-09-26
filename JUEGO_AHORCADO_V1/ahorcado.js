@@ -86,3 +86,27 @@ ingresarLetra = function () {
 
 }
 
+mostrarAhorcado = function () {
+    if (errore == 1)
+    mostrarImagen("ahorcadoImagen", "Ahorcado_01.pn");
+    
+    mostrarImagen("ahorcadoImagen", "Ahorcado_01.pn");
+
+    mostrarImagen("ahorcadoImagen", "Ahorcado_02.pn");
+
+    mostrarImagen("ahorcadoImagen", "Ahorcado_03.pn");
+
+    mostrarImagen("ahorcadoImagen", "Ahorcado_04.pn");
+
+    mostrarImagen("ahorcadoImagen", "Ahorcado_05.pn");
+
+    mostrarImagen("ahorcadoImagen", "Ahorcado_06.pn");
+
+    mostrarImagen("ahorcadoImagen", "Ahorcado_07.pn");
+
+    mostrarImagen("ahorcadoImagen", "Ahorcado_08.pn");
+
+    mostrarImagen("ahorcadoImagen", "Ahorcado_09.pn");
+
+
+}
