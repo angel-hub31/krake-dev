@@ -32,3 +32,8 @@ guardarPalabra=function(){
     }
     mayuscula=0;
 }
+mostrarLetra=function(letra,posicion){
+    let cmpDiv ="div"+posicion;
+    mostrarTexto(cmpDiv,letra);
+
+}
