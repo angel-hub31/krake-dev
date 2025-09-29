@@ -1,4 +1,3 @@
-
 recuperarTexto = function (idComponente) {
     const componente = document.getElementById(idComponente);
     if (componente) {
@@ -12,12 +11,12 @@ recuperarTexto = function (idComponente) {
 
 recuperarInt = function (idComponente) {
     let valorCaja = recuperarTexto(idComponente);
-    return parseInt(valorCaja);
+    return esNumero(valorCaja) ? parseInt(valorCaja, 10) : 0;
 }
 
 recuperarFloat = function (idComponente) {
     let valorCaja = recuperarTexto(idComponente);
-    return parseFloat(valorCaja);
+    return esNumero(valorCaja) ? parseFloat(valorCaja) : 0.0;
 }
 
 mostrarTexto = function (idComponente, mensaje) {
@@ -46,6 +45,21 @@ limpiarTexto = function (idComponente) {
     mostrarTexto(idComponente, '');
 }
 
+mostrarError = function (idComponente, mensaje) {
+    const componente = document.getElementById(idComponente);
+    if (componente) {
+        componente.innerHTML = mensaje;
+        componente.style.display = "block"; 
+    }
+}
+
+ocultarError = function (idComponente) {
+    const componente = document.getElementById(idComponente);
+    if (componente) {
+        componente.innerHTML = "";
+        componente.style.display = "none"; 
+    }
+}
 
 
 mostrarComponente = function (idComponente) {
@@ -77,5 +91,8 @@ habilitarComponente = function (idComponente) {
 }
 
 esNumero = function (valor) {
-    return !isNaN(parseFloat(valor)) && isFinite(valor);
+    if (typeof valor !== 'string') return !isNaN(parseFloat(valor)) && isFinite(valor);
+    const trimmed = valor.trim();
+    if (trimmed === '') return false;
+    return !isNaN(parseFloat(trimmed)) && isFinite(trimmed);
 }
