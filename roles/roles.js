@@ -1,20 +1,20 @@
-(function() {
+(function () {
     let empleados = [
         { cedula: "1714616123", nombre: "JOHN", apellido: "CENA", sueldo: 500.0 },
         { cedula: "0914632123", nombre: "LUISA", apellido: "GONZALEZ", sueldo: 900.0 },
         { cedula: "0823456789", nombre: "MARIA", apellido: "PEREZ", sueldo: 750.0 },
-        { cedula: "1054321098", nombre: "PEDRO", apellido: "PASCAL", sueldo: 1200.0 } 
+        { cedula: "1054321098", nombre: "PEDRO", apellido: "PASCAL", sueldo: 1200.0 }
     ];
-    let roles = []; 
+    let roles = [];
     let empleadoEnRol = null;
     let esNuevo = false;
-    const PORCENTAJE_IESS_EMPLEADO = 0.0945; 
-    const PORCENTAJE_IESS_EMPRESA = 0.1115;  
+    const PORCENTAJE_IESS_EMPLEADO = 0.0945;
+    const PORCENTAJE_IESS_EMPRESA = 0.1115;
 
 
-    actualizarEstadoEmpleado = function(habilitar) {
+    actualizarEstadoEmpleado = function (habilitar) {
         const campos = ["txtCedula", "txtNombre", "txtApellido", "txtSueldo"];
-        
+
         campos.forEach(id => {
             limpiarTexto(id);
             ocultarError(`lblError${id.substring(3)}`);
@@ -29,7 +29,7 @@
                 deshabilitarComponente(id);
             }
         });
-        
+
         if (habilitar) {
             habilitarComponente("btnGuardar");
         } else {
@@ -37,18 +37,18 @@
         }
 
         if (!habilitar) {
-             habilitarComponente("txtBusquedaCedula");
-             habilitarComponente("btnNuevo");
+            habilitarComponente("txtBusquedaCedula");
+            habilitarComponente("btnNuevo");
         }
     }
 
-     esSoloMayusculas=function(texto) {
-        return texto.trim().length >= 3 && /^[A-Z\s]+$/.test(texto.trim()); 
+    esSoloMayusculas = function (texto) {
+        return texto.trim().length >= 3 && /^[A-Z\s]+$/.test(texto.trim());
     }
 
     validarCamposEmpleado = function () {
         let esValido = true;
-        
+
         const cedula = recuperarTexto("txtCedula");
         if (cedula.length !== 10) {
             mostrarError("lblErrorCedula", "La cédula debe tener exactamente 10 dígitos");
@@ -67,7 +67,7 @@
 
         const apellido = recuperarTexto("txtApellido");
         if (!esSoloMayusculas(apellido)) {
-            mostrarError("lblErrorApellido","Mínimo 3 caracteres, solo letras mayúsculas");
+            mostrarError("lblErrorApellido", "Mínimo 3 caracteres, solo letras mayúsculas");
             esValido = false;
         } else {
             ocultarError("lblErrorApellido");
@@ -77,7 +77,7 @@
         const sueldo = recuperarFloat("txtSueldo");
 
         if (!esNumero(sueldoStr) || sueldo < 400 || sueldo > 5000) {
-            mostrarError("lblErrorSueldo","Debe ser un número flotante entre 400.00 y 5000.00");
+            mostrarError("lblErrorSueldo", "Debe ser un número flotante entre 400.00 y 5000.00");
             esValido = false;
         } else {
             ocultarError("lblErrorSueldo");
@@ -85,7 +85,165 @@
 
         return esValido;
     }
+
+    /*creamos la funcion EjecutarBusqueda
     
+    
+    
+    
+    */
+  buscarEmpleado = function (cedula) {
+        return empleados.find(e => e.cedula === cedula);
+    }
+
+    // CORRECCIÓN: Se ajusta la lógica de habilitación/deshabilitación para ser más consistente
+    ejecutarBusqueda = function () {
+        const cedulaBusqueda = recuperarTexto("txtBusquedaCedula");
+        const empleadoEncontrado = buscarEmpleado(cedulaBusqueda);
+
+        ocultarError("lblErrorBusqueda");
+        
+        limpiarCajasEmpleado(); // Limpia los campos de detalle y restablece el estado inicial
+        
+        if (!empleadoEncontrado) {
+            alert("EMPLEADO NO EXISTE");
+            // Se mantiene el estado inicial: solo búsqueda y nuevo habilitados
+        } else {
+            // Mostrar los datos
+            mostrarTextoEnCaja("txtCedula", empleadoEncontrado.cedula);
+            mostrarTextoEnCaja("txtNombre", empleadoEncontrado.nombre);
+            mostrarTextoEnCaja("txtApellido", empleadoEncontrado.apellido);
+            mostrarTextoEnCaja("txtSueldo", empleadoEncontrado.sueldo.toFixed(2));
+            
+            // Habilitar campos de edición y guardar
+            habilitarComponente("txtNombre");
+            habilitarComponente("txtApellido");
+            habilitarComponente("txtSueldo");
+            habilitarComponente("btnGuardar");
+            
+            // Deshabilitar la cédula de detalle y los botones de inicio
+            deshabilitarComponente("txtCedula");
+            deshabilitarComponente("btnNuevo");
+            deshabilitarComponente("txtBusquedaCedula");
+            
+            esNuevo = false;
+        }
+    }
+
+    agregarEmpleado = function (empleado) {
+        const cedula = empleado.cedula;
+        const existe = empleados.some(e => e.cedula === cedula);
+
+        if (existe) {
+            return false; 
+        } else {
+            empleados.push(empleado);
+            return true;
+        }
+    }
+    
+    // CORRECCIÓN: Se renombra la función a 'guardar' para usarla en el listener del DOM
+    guardar = function () {
+        if (!validarCamposEmpleado()) {
+            return;
+        }
+
+        const cedulaRecuperada = recuperarTexto("txtCedula");
+        const empleadoAGuardar = {
+            cedula: cedulaRecuperada,
+            nombre: recuperarTexto("txtNombre"),
+            apellido: recuperarTexto("txtApellido"),
+            sueldo: recuperarFloat("txtSueldo")
+        };
+        
+        if (esNuevo) {
+            const agregadoCorrectamente = agregarEmpleado(empleadoAGuardar);
+
+            if (agregadoCorrectamente) {
+                alert("EMPLEADO GUARDADO CORRECTAMENTE");
+                esNuevo = false;
+                
+            } else {
+                alert(`YA EXISTE UN EMPLEADO CON LA CÉDULA ${cedulaRecuperada}`);
+                return;
+            }
+
+        } else {
+            const empleadoExistente = buscarEmpleado(cedulaRecuperada); 
+            
+            if (!empleadoExistente) {
+                alert("Error de integridad: El empleado a modificar no se encuentra.");
+                return;
+            }
+            
+            const indiceExistente = empleados.findIndex(e => e.cedula === cedulaRecuperada);
+
+            if (indiceExistente !== -1) {
+                empleados[indiceExistente].nombre = empleadoAGuardar.nombre;
+                empleados[indiceExistente].apellido = empleadoAGuardar.apellido;
+                empleados[indiceExistente].sueldo = empleadoAGuardar.sueldo;
+                
+                alert("EMPLEADO MODIFICADO EXITOSAMENTE");
+            } else {
+                 alert("Error: No se pudo encontrar el empleado para modificar."); 
+                 return;
+            }
+        }
+        
+        mostrarTablaEmpleados();
+        limpiarCajasEmpleado(); 
+    }
+
+
+ ejecutarNuevo = function () {
+        
+        limpiarCajasEmpleado(); // Limpia y deshabilita todo primero
+        
+        const campos = ["txtCedula", "txtNombre", "txtApellido", "txtSueldo"];
+        campos.forEach(limpiarTexto); 
+        campos.forEach(ocultarError); 
+        
+        // Habilita lo necesario para un nuevo registro
+        campos.forEach(habilitarComponente); 
+        habilitarComponente("btnGuardar");
+
+        esNuevo = true;
+        
+        deshabilitarComponente("txtBusquedaCedula"); 
+        deshabilitarComponente("btnNuevo"); 
+    }
+
+
+    nuevoEmpleado = function () {
+        ejecutarNuevo();
+    }
+
+
+    limpiarCajasEmpleado = function () {
+
+        const campos = ["txtCedula", "txtNombre", "txtApellido", "txtSueldo"];
+
+        // Limpia las 4 cajas de texto
+        campos.forEach(limpiarTexto);
+        ocultarError("lblErrorBusqueda");
+        limpiarTexto("txtBusquedaCedula");
+        campos.forEach(id => ocultarError(`lblError${id.substring(3)}`));
+
+        // Coloca la variable esNuevo en false
+        esNuevo = false;
+
+        // Deshabilita las 4 cajas de texto y el botón GUARDAR
+        campos.forEach(deshabilitarComponente);
+        deshabilitarComponente("btnGuardar");
+
+        // Habilita el botón NUEVO y la caja de búsqueda para un nuevo inicio
+        habilitarComponente("txtBusquedaCedula");
+        habilitarComponente("btnNuevo");
+    }
+
+
+
+    /*
     buscarEmpleado = function () {
         const cedulaBusqueda = recuperarTexto("txtBusquedaCedula");
         const empleadoEncontrado = empleados.find(e => e.cedula === cedulaBusqueda);
@@ -196,8 +354,8 @@
         esNuevo = false; 
     }
 
+*/
 
-    
     mostrarTablaEmpleados = function () {
         let contenidoTabla = "<table><thead><tr><th>CEDULA</th><th>NOMBRE</th><th>APELLIDO</th><th>SUELDO</th></tr></thead><tbody>";
 
@@ -214,7 +372,7 @@
 
         mostrarTexto("tablaEmpleados", contenidoTabla);
     }
-    
+
     limpiarInfoRol = function () {
         mostrarTexto("infoCedula", " ");
         mostrarTexto("infoNombre", " ");
@@ -249,7 +407,7 @@
 
     validarCamposRol = function () {
         let esValido = true;
-        
+
         if (empleadoEnRol === null) {
             mostrarError("lblErrorBusquedaRol", "Debe buscar y seleccionar un empleado");
             esValido = false;
@@ -259,7 +417,7 @@
 
         const descuentosStr = recuperarTexto("txtDescuentos");
         const descuentos = recuperarFloat("txtDescuentos");
-        
+
         if (!esNumero(descuentosStr) || descuentos < 0) {
             mostrarError("lblErrorDescuentos", "Debe ser un valor numérico positivo o cero");
             esValido = false;
@@ -272,6 +430,8 @@
 
     calcularRol = function () {
         if (!validarCamposRol()) {
+            mostrarTexto("infoIESS", "0.0");
+            mostrarTexto("infoPago", "0.0");
             return null; 
         }
 
@@ -283,7 +443,7 @@
 
         mostrarTexto("infoIESS", aporteIESS.toFixed(2));
         mostrarTexto("infoPago", totalPagar.toFixed(2));
-        
+
         return {
             aporteIESS: aporteIESS,
             descuentos: descuentos,
@@ -315,13 +475,13 @@
         const indiceExistente = roles.findIndex(r => r.cedula === empleadoEnRol.cedula);
 
         if (indiceExistente !== -1) {
-            roles[indiceExistente] = nuevoRol; 
+            roles[indiceExistente] = nuevoRol;
             alert(`Rol de pago actualizado para el empleado ${empleadoEnRol.cedula}`);
         } else {
-            roles.push(nuevoRol); 
+            roles.push(nuevoRol);
             alert(`Rol de pago guardado para el empleado ${empleadoEnRol.cedula}`);
         }
-        
+
         limpiarInfoRol();
     }
 
@@ -330,9 +490,9 @@
         mostrarComponente("divEmpleado");
         ocultarComponente("divRol");
         ocultarComponente("divResumen");
-        
-        limpiarCajasEmpleado(); 
-        
+
+        limpiarCajasEmpleado();
+
         mostrarTablaEmpleados();
     }
 
@@ -379,14 +539,14 @@
         mostrarTablaResumen();
     }
 
-    
+
 
     document.addEventListener("DOMContentLoaded", () => {
-        
+
         const botonesMenu = document.querySelectorAll(".menu .estiloBoton");
 
         botonesMenu.forEach(button => {
-            const buttonValue = button.value.toUpperCase(); 
+            const buttonValue = button.value.toUpperCase();
             switch (buttonValue) {
                 case "EMPLEADO":
                     button.addEventListener("click", mostrarOpcionEmpleado);
@@ -399,25 +559,20 @@
                     break;
             }
         });
+
+
+        // CORRECCIÓN: Se agrega el ID al botón NUEVO para manejarlo en JS
+        const nuevoButton = document.querySelector('#divEmpleado .botones input[value="NUEVO"]');
+        if (nuevoButton) nuevoButton.id = 'btnNuevo';
         
-        
+        // CORRECCIÓN DE EVENT LISTENERS
         const buscarEmpleadoButton = document.querySelector('#divEmpleado .area:nth-child(1) .contenedorBoton input[value="BUSCAR"]');
-        const nuevoButton = document.querySelector('input[value="NUEVO"]');
-        const guardarButton = document.querySelector('input[value="GUARDAR"]');
-        const limpiarButton = document.querySelector('input[value="LIMPIAR"]');
+        const guardarButton = document.getElementById('btnGuardar'); // Ya tiene el ID en HTML
+        const limpiarButton = document.querySelector('#divEmpleado .botones input[value="LIMPIAR"]');
 
-        if (buscarEmpleadoButton) buscarEmpleadoButton.addEventListener('click', buscarEmpleado);
-
-        if (nuevoButton) {
-            nuevoButton.id = 'btnNuevo';
-            nuevoButton.addEventListener('click', nuevoEmpleado); 
-        }
-
-        if (guardarButton) {
-            guardarButton.id = 'btnGuardar';
-            guardarButton.addEventListener('click', guardarEmpleado); 
-        }
-        
+        if (buscarEmpleadoButton) buscarEmpleadoButton.addEventListener('click', ejecutarBusqueda); // Usar ejecutarBusqueda
+        if (nuevoButton) nuevoButton.addEventListener('click', ejecutarNuevo); // Usar ejecutarNuevo
+        if (guardarButton) guardarButton.addEventListener('click', guardar); // Usar guardar
         if (limpiarButton) limpiarButton.addEventListener('click', limpiarCajasEmpleado);
         
         const buscarRolButton = document.querySelector('#divRol .area:nth-child(1) .contenedorBoton input[value="BUSCAR"]');
