@@ -86,42 +86,37 @@
         return esValido;
     }
 
-    /*creamos la funcion EjecutarBusqueda
-    
-    
-    
-    
-    */
+   
   buscarEmpleado = function (cedula) {
         return empleados.find(e => e.cedula === cedula);
     }
 
-    // CORRECCIÓN: Se ajusta la lógica de habilitación/deshabilitación para ser más consistente
+    
     ejecutarBusqueda = function () {
         const cedulaBusqueda = recuperarTexto("txtBusquedaCedula");
         const empleadoEncontrado = buscarEmpleado(cedulaBusqueda);
 
         ocultarError("lblErrorBusqueda");
         
-        limpiarCajasEmpleado(); // Limpia los campos de detalle y restablece el estado inicial
+        limpiarCajasEmpleado();
         
         if (!empleadoEncontrado) {
             alert("EMPLEADO NO EXISTE");
-            // Se mantiene el estado inicial: solo búsqueda y nuevo habilitados
+          
         } else {
-            // Mostrar los datos
+            
             mostrarTextoEnCaja("txtCedula", empleadoEncontrado.cedula);
             mostrarTextoEnCaja("txtNombre", empleadoEncontrado.nombre);
             mostrarTextoEnCaja("txtApellido", empleadoEncontrado.apellido);
             mostrarTextoEnCaja("txtSueldo", empleadoEncontrado.sueldo.toFixed(2));
             
-            // Habilitar campos de edición y guardar
+            
             habilitarComponente("txtNombre");
             habilitarComponente("txtApellido");
             habilitarComponente("txtSueldo");
             habilitarComponente("btnGuardar");
             
-            // Deshabilitar la cédula de detalle y los botones de inicio
+          
             deshabilitarComponente("txtCedula");
             deshabilitarComponente("btnNuevo");
             deshabilitarComponente("txtBusquedaCedula");
@@ -142,7 +137,6 @@
         }
     }
     
-    // CORRECCIÓN: Se renombra la función a 'guardar' para usarla en el listener del DOM
     guardar = function () {
         if (!validarCamposEmpleado()) {
             return;
@@ -197,13 +191,13 @@
 
  ejecutarNuevo = function () {
         
-        limpiarCajasEmpleado(); // Limpia y deshabilita todo primero
+        limpiarCajasEmpleado(); 
         
         const campos = ["txtCedula", "txtNombre", "txtApellido", "txtSueldo"];
         campos.forEach(limpiarTexto); 
         campos.forEach(ocultarError); 
         
-        // Habilita lo necesario para un nuevo registro
+       
         campos.forEach(habilitarComponente); 
         habilitarComponente("btnGuardar");
 
@@ -223,20 +217,19 @@
 
         const campos = ["txtCedula", "txtNombre", "txtApellido", "txtSueldo"];
 
-        // Limpia las 4 cajas de texto
         campos.forEach(limpiarTexto);
         ocultarError("lblErrorBusqueda");
         limpiarTexto("txtBusquedaCedula");
         campos.forEach(id => ocultarError(`lblError${id.substring(3)}`));
 
-        // Coloca la variable esNuevo en false
+        
         esNuevo = false;
 
-        // Deshabilita las 4 cajas de texto y el botón GUARDAR
+       
         campos.forEach(deshabilitarComponente);
         deshabilitarComponente("btnGuardar");
 
-        // Habilita el botón NUEVO y la caja de búsqueda para un nuevo inicio
+       
         habilitarComponente("txtBusquedaCedula");
         habilitarComponente("btnNuevo");
     }
@@ -561,18 +554,18 @@
         });
 
 
-        // CORRECCIÓN: Se agrega el ID al botón NUEVO para manejarlo en JS
+       
         const nuevoButton = document.querySelector('#divEmpleado .botones input[value="NUEVO"]');
         if (nuevoButton) nuevoButton.id = 'btnNuevo';
         
-        // CORRECCIÓN DE EVENT LISTENERS
+       
         const buscarEmpleadoButton = document.querySelector('#divEmpleado .area:nth-child(1) .contenedorBoton input[value="BUSCAR"]');
-        const guardarButton = document.getElementById('btnGuardar'); // Ya tiene el ID en HTML
+        const guardarButton = document.getElementById('btnGuardar'); 
         const limpiarButton = document.querySelector('#divEmpleado .botones input[value="LIMPIAR"]');
 
-        if (buscarEmpleadoButton) buscarEmpleadoButton.addEventListener('click', ejecutarBusqueda); // Usar ejecutarBusqueda
-        if (nuevoButton) nuevoButton.addEventListener('click', ejecutarNuevo); // Usar ejecutarNuevo
-        if (guardarButton) guardarButton.addEventListener('click', guardar); // Usar guardar
+        if (buscarEmpleadoButton) buscarEmpleadoButton.addEventListener('click', ejecutarBusqueda); 
+        if (nuevoButton) nuevoButton.addEventListener('click', ejecutarNuevo); 
+        if (guardarButton) guardarButton.addEventListener('click', guardar); 
         if (limpiarButton) limpiarButton.addEventListener('click', limpiarCajasEmpleado);
         
         const buscarRolButton = document.querySelector('#divRol .area:nth-child(1) .contenedorBoton input[value="BUSCAR"]');
