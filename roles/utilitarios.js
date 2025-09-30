@@ -96,3 +96,22 @@ esNumero = function (valor) {
     if (trimmed === '') return false;
     return !isNaN(parseFloat(trimmed)) && isFinite(trimmed);
 }
+
+recuperarTextoDiv = function (idComponente) {
+    const componente = document.getElementById(idComponente);
+    if (componente) {
+        // En lugar de 'value', siempre usa textContent o innerText
+        return componente.textContent || componente.innerText || '';
+    }
+    return '';
+}
+
+recuperarIntDiv = function (idComponente) {
+    let valorCaja = recuperarTextoDiv(idComponente);
+    return esNumero(valorCaja) ? parseInt(valorCaja, 10) : 0;
+}
+
+recuperarFloatDiv = function (idComponente) {
+    let valorCaja = recuperarTextoDiv(idComponente);
+    return esNumero(valorCaja) ? parseFloat(valorCaja) : 0.0;
+}

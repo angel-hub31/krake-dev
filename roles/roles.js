@@ -378,6 +378,7 @@
         ocultarError("lblErrorDescuentos");
         empleadoEnRol = null;
     }
+    /*
 
     buscarEmpleadoRol = function () {
         const cedulaBusqueda = recuperarTexto("txtBusquedaCedulaRol");
@@ -396,10 +397,45 @@
             empleadoEnRol = null;
         }
     }
+*/
+
+
+/* FUNCION buscarPorRol */
+buscarPorRol = function () { 
+        const cedulaBusqueda = recuperarTexto("txtBusquedaCedulaRol");
+        const empleado = empleados.find(e => e.cedula == cedulaBusqueda);
+
+        limpiarInfoRol();
+
+        if (empleado) {
+            empleadoEnRol = empleado;
+            mostrarTexto("infoCedula", empleado.cedula);
+            mostrarTexto("infoNombre", `${empleado.nombre} ${empleado.apellido}`);
+            mostrarTexto("infoSueldo", empleado.sueldo.toFixed(2));
+            ocultarError("lblErrorBusquedaRol");
+        } else {
+            mostrarError("lblErrorBusquedaRol", "Empleado no encontrado");
+            alert("EMPLEADO NO EXISTE"); 
+            empleadoEnRol = null;
+        }
+    }
+
+/* funcion calcularAporteEmpleado*/
+calcularAporteEmpleado = function (sueldo) {
+        const aporte = sueldo * PORCENTAJE_IESS_EMPLEADO;
+        return aporte;
+    }
+
+    // FUNCIÓN  calcularValorAPagar
+    calcularValorAPagar = function (sueldo, aporteIess, descuento) {
+        const valorAPagar = sueldo - aporteIess - descuento;
+        return valorAPagar;
+    }
 
 
     validarCamposRol = function () {
         let esValido = true;
+        const sueldo = empleadoEnRol ? empleadoEnRol.sueldo : 0; 
 
         if (empleadoEnRol === null) {
             mostrarError("lblErrorBusquedaRol", "Debe buscar y seleccionar un empleado");
@@ -414,6 +450,9 @@
         if (!esNumero(descuentosStr) || descuentos < 0) {
             mostrarError("lblErrorDescuentos", "Debe ser un valor numérico positivo o cero");
             esValido = false;
+        } else if (empleadoEnRol !== null && descuentos > sueldo) { 
+             mostrarError("lblErrorDescuentos", `Los descuentos no pueden superar el sueldo (${sueldo.toFixed(2)})`);
+             esValido = false;
         } else {
             ocultarError("lblErrorDescuentos");
         }
@@ -421,36 +460,42 @@
         return esValido;
     }
 
-    calcularRol = function () {
+/*funcion calcularRol */
+     calcularRol = function () {
         if (!validarCamposRol()) {
             mostrarTexto("infoIESS", "0.0");
             mostrarTexto("infoPago", "0.0");
-            return null; 
+            return; 
         }
 
         const sueldo = empleadoEnRol.sueldo;
         const descuentos = recuperarFloat("txtDescuentos");
 
-        const aporteIESS = sueldo * PORCENTAJE_IESS_EMPLEADO;
-        const totalPagar = sueldo - aporteIESS - descuentos;
+        const aporteIESS = calcularAporteEmpleado(sueldo);
+        
+        const totalPagar = calcularValorAPagar(sueldo, aporteIESS, descuentos);
 
         mostrarTexto("infoIESS", aporteIESS.toFixed(2));
         mostrarTexto("infoPago", totalPagar.toFixed(2));
-
-        return {
-            aporteIESS: aporteIESS,
-            descuentos: descuentos,
-            totalPagar: totalPagar
-        };
+        
     }
 
 
-    guardarRol = function () {
-        const calculos = calcularRol();
 
-        if (!calculos) {
+
+     guardarRol = function () {
+        
+        calcularRol();
+
+        if (!validarCamposRol()) {
             return;
         }
+
+        const sueldo = empleadoEnRol.sueldo;
+        const descuentos = recuperarFloat("txtDescuentos");
+        const aporteIESS = calcularAporteEmpleado(sueldo);
+        const totalPagar = calcularValorAPagar(sueldo, aporteIESS, descuentos);
+
 
         const aporteEmpresa = empleadoEnRol.sueldo * PORCENTAJE_IESS_EMPRESA;
 
@@ -459,10 +504,10 @@
             nombre: empleadoEnRol.nombre,
             apellido: empleadoEnRol.apellido,
             sueldo: empleadoEnRol.sueldo,
-            descuentos: calculos.descuentos,
-            aporteEmpleado: calculos.aporteIESS,
+            descuentos: descuentos,
+            aporteEmpleado: aporteIESS,
             aporteEmpresa: aporteEmpresa,
-            totalPagar: calculos.totalPagar
+            totalPagar: totalPagar
         };
 
         const indiceExistente = roles.findIndex(r => r.cedula === empleadoEnRol.cedula);
@@ -477,6 +522,7 @@
 
         limpiarInfoRol();
     }
+
 
 
     mostrarOpcionEmpleado = function () {
@@ -555,7 +601,7 @@
 
 
        
-        const nuevoButton = document.querySelector('#divEmpleado .botones input[value="NUEVO"]');
+       const nuevoButton = document.querySelector('#divEmpleado .botones input[value="NUEVO"]');
         if (nuevoButton) nuevoButton.id = 'btnNuevo';
         
        
@@ -569,13 +615,13 @@
         if (limpiarButton) limpiarButton.addEventListener('click', limpiarCajasEmpleado);
         
         const buscarRolButton = document.querySelector('#divRol .area:nth-child(1) .contenedorBoton input[value="BUSCAR"]');
-        const calcularRolButton = document.querySelector('#divRol .botones input[value="CALCULAR"]');
+        const calcularRolButton = document.querySelector('#divRol .botones input[value="CALCULAR"]'); 
         const guardarRolButton = document.querySelector('#divRol .botones input[value="GUARDAR"]');
 
-        if (buscarRolButton) buscarRolButton.addEventListener('click', buscarEmpleadoRol);
-        if (calcularRolButton) calcularRolButton.addEventListener('click', calcularRol);
+        if (buscarRolButton) buscarRolButton.addEventListener('click', buscarPorRol); 
+        if (calcularRolButton) calcularRolButton.addEventListener('click', calcularRol); 
         if (guardarRolButton) guardarRolButton.addEventListener('click', guardarRol);
         
-        mostrarOpcionEmpleado();
+        mostrarOpcionRol(); 
     });
 })();
