@@ -100,7 +100,7 @@ esNumero = function (valor) {
 recuperarTextoDiv = function (idComponente) {
     const componente = document.getElementById(idComponente);
     if (componente) {
-        // En lugar de 'value', siempre usa textContent o innerText
+        
         return componente.textContent || componente.innerText || '';
     }
     return '';
