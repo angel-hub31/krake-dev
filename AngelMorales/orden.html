@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+
+<head>
+   
+    <script src="orden.js"></script>
+    <script src="utilitarios.js"></script>
+    <link rel="stylesheet" href="orden.css">
+</head>
+
+<body onload="mostrarPersonas()">
+    <div class="container">
+        <h1>PERSONA MAYOR Y MENOR</h1>
+
+        <h2>Agregar Persona</h2>
+        <div class="recuperar">
+            <label for="txtNombre">Nombre:</label>
+            <input type="text" id="txtNombre" placeholder="Ingrese nombre">
+            <div id="errorNombre" class="error"></div>
+        </div>
+        <div class="recuperar">
+            <label for="txtEdad">Edad:</label>
+            <input type="text" id="txtEdad" placeholder="Ingrese edad (0-100)">
+            <div id="errorEdad" class="error"></div>
+        </div>
+        <button class="btn" onclick="agregarPersona()">GUARDAR</button>
+
+        <h2>Listado de Personas</h2>
+        <div id="tablaPersonas"></div>
+
+        <h2>Búsqueda de Extremos</h2>
+        <button class="btnBuscar" onclick="determinarMayor()">ENCONTRAR MAYOR</button>
+        <button class="btnBuscar" onclick="determinarMenor()">ENCONTRAR MENOR</button>
+
+        <div id="resultadoMayor" class="resultado" >
+            <strong>PERSONA MAYOR:</strong> <span id="nombreMayor"></span>, <span id="edadMayor"></span> años
+        </div>
+
+        <div id="resultadoMenor" class="resultado">
+            <strong>PERSONA MENOR:</strong> <span id="nombreMenor"></span>, <span id="edadMenor"></span> años
+        </div>
+    </div>
+
+</body>
+
+</html>
