@@ -7,51 +7,28 @@ cargar=function(){
     mostrarComponente("divCuentas");
     ocultarComponente("divMovimientos");
     ocultarComponente("divTransacciones");
-    // Al cargar la página, también mostramos las cuentas existentes.
-    mostrarCuentas(); 
+    
 }
 
 mostrarCuentas=function(){
+    let objetoPersona={};
+    let tabla="<table><tr><th> NUMERO CUENTA </th><th> NOMBRE </th><th> SALDO </th></tr>";
+    for(let i=0; i<cuentas.length;i++){
+        objetoPersona=cuentas[i];
+        tabla+="<tr>"+"<td>"+objetoPersona.numeroCuenta+"</td>"+
+            "<td>"+objetoPersona.nombre+""+objetoPersona.apellido+"</td>"+
+            "<td>"+objetoPersona.saldo+"</td>"+"</tr>";
+    }
+
+    tabla+="</table>";
+ mostrarTextoHTML("tablaCuentas", tabla);
+
+
     /*
         Muestra en pantalla una tabla con la información de todas las cuentas del arreglo.
         Columnas: NUMERO CUENTA, NOMBRE, SALDO
         En la columna NOMBRE concatenar el nombre y el apellido
     */
-    let contenidoTabla = `
-        <table>
-            <thead>
-                <tr>
-                    <th>CUENTA</th>
-                    <th>CEDULA</th>
-                    <th>NOMBRE</th>
-                    <th>SALDO</th>
-                </tr>
-            </thead>
-            <tbody>
-    `;
-    
-    // Iteramos sobre el arreglo de cuentas para construir las filas de la tabla
-    for (let i = 0; i < cuentas.length; i++) {
-        let cuenta = cuentas[i];
-        let nombreCompleto = cuenta.nombre + " " + cuenta.apellido;
-        
-        contenidoTabla += `
-            <tr>
-                <td>${cuenta.numeroCuenta}</td>
-                <td>${cuenta.cedula}</td>
-                <td>${nombreCompleto}</td>
-                <td>$${cuenta.saldo.toFixed(2)}</td>
-            </tr>
-        `;
-    }
-
-    contenidoTabla += `
-            </tbody>
-        </table>
-    `;
-
-    // Usamos la función de utilitarios para mostrar la tabla en el div correspondiente
-    mostrarTexto("divTablaCuentas", contenidoTabla); 
 }
 
 /*
@@ -59,12 +36,15 @@ mostrarCuentas=function(){
     si existe retorna el objeto cuenta, caso contrario retorna null. 
 */
 buscarCuenta=function(numeroCuenta){
-    for (let i = 0; i < cuentas.length; i++) {
-        if (cuentas[i].numeroCuenta == numeroCuenta) {
-            return cuentas[i]; // Retorna el objeto cuenta
+    let objetoPersona={};
+    for(let i=0;i<cuentas.length;i++){
+        objetoPersona=cuentas[i];
+        if(objetoPersona.numeroCuenta==numeroCuenta){
+            return objetoPersona;
+            break;
         }
     }
-    return null; // No se encontró la cuenta
+    return null;
 }
 
 /*
@@ -72,46 +52,32 @@ buscarCuenta=function(numeroCuenta){
     No retorna nada
 */
 agregarCuenta=function(cuenta){
-    // Busca si la cuenta ya existe
-    let cuentaEncontrada = buscarCuenta(cuenta.numeroCuenta);
-
-    if (cuentaEncontrada) {
-        // Si ya existe mostrar un alert CUENTA EXISTENTE
-        alert(" CUENTA EXISTENTE: Ya hay una cuenta con el numero " + cuenta.numeroCuenta);
-    } else {
-        // Agrega la cuenta al arreglo
+    let cliente=buscarCuenta(cuenta.numeroCuenta);
+    if(cliente==null){
+        alert(" CUENTA AGREGADA ");
         cuentas.push(cuenta);
-        // Si se agrega, mostrar un alert CUENTA AGREGADA
-        alert(" CUENTA AGREGADA: Cuenta " + cuenta.numeroCuenta + " creada exitosamente.");
+    }else{
+        alert(" CUENTA EXISTENTE ");
     }
+    //Si ya existe mostrar un alert CUENTA EXISTENTE
+    //Si se agrega, mostrar un alert CUENTA AGREGADA
 }
 
 agregar=function(){
+    let objetoCuenta={};
+    let cedula=recuperarTexto("txtCedula");//"txtCuenta"
+    let cuenta=recuperarTexto("txtCuenta");//"txtNombre"
+    let nombre=recuperarTexto("txtNombre");
+    let apellido=recuperarTexto("txtApellido");//
     //Toma los valores de las cajas de texto, sin validaciones
-    let cedula = recuperarTexto("txtCedula");
-    let nombre = recuperarTexto("txtNombre");
-    let apellido = recuperarTexto("txtApellido");
-    let numeroCuenta = recuperarTexto("txtNumeroCuenta");
-    
-    // Crea un objeto cuenta y agrega los atributos con los valores de las cajas respectivas
-    // Con saldo 0.
-    let nuevaCuenta = {
-        numeroCuenta: numeroCuenta, 
-        cedula: cedula, 
-        nombre: nombre, 
-        apellido: apellido, 
-        saldo: 0.0
-    };
-    
-    // Invoca a agregarCuenta
-    agregarCuenta(nuevaCuenta);
-    
-    // Invoca a mostrarCuentas (se refresca la tabla)
+    objetoCuenta.numeroCuenta=cuenta;
+    objetoCuenta.cedula=cedula;
+    objetoCuenta.nombre=nombre;//apellido
+    objetoCuenta.apellido=apellido;
+    objetoCuenta.saldo=0.0;
+    //Crea un objeto cuenta y agrega los atributos con los valores de las cajas respectivas
+    agregarCuenta(objetoCuenta);
+    //Invoca a agregarCuenta
     mostrarCuentas();
-
-    // Opcional: Limpiar las cajas de texto después de guardar
-    mostrarTextoEnCaja("txtCedula", "");
-    mostrarTextoEnCaja("txtNombre", "");
-    mostrarTextoEnCaja("txtApellido", "");
-    mostrarTextoEnCaja("txtNumeroCuenta", "");
+    //Invoca a mostrarCuentas
 }
