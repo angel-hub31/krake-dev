@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="convertidor.js"></script>
+    <link rel="stylesheet" href="convertidor.css" />
+</head>
+
+<body>
+    <div class="principal">
+        <div class="logoEscuela">
+            <img src="logoKrakeDev.png" width="100%" />
+        </div>
+
+        <div class="contenido">
+            <div class="titulo">
+                CONVERTIDOR DE MONEDAS
+            </div>
+
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    INGRESE EL VALOR EN DÓLARES
+                </div>
+                <div>
+                    <input type="text" class="cajaTexto" id="txtValor"/>
+                </div>
+            </div>
+            <div class="botones">
+                <div class="contenedorBoton">
+                    <input type="button" value="PESOS COLOMBIANOS" class="estiloBoton" onclick="mostrarPesosCol();"/>
+                </div>
+                <div class="contenedorBoton">
+                    <input type="button"  value="PESOS MEXICANOS" class="estiloBoton" onclick="mostrarPesosMx();" />
+                </div>
+                <div class="contenedorBoton">
+                    <input type="button" value="         EUROS        " class="estiloBoton" onclick="mostrarEnEuros();"/>
+                </div>
+            </div>
+
+            <div class="resultado">
+                <div>
+                    EQUIVALENTE:
+                </div>
+                <div id="lblValor">
+                    0
+                </div>
+                <div id="lblMoneda">
+                    
+                </div>
+                <div>
+                    <img src="" id="imgBandera" width="40px"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="convertidorGrados.js"></script>
+    <link rel="stylesheet" href="convertidorGrados.css" />
+</head>
+
+<body>
+    <div class="principal">
+        <div class="logoEscuela">
+            <img src="logoKrakeDev.png" width="100%" />
+        </div>
+
+        <div class="contenido">
+            <div class="titulo">
+                CONVERTIDOR A FARENHEIT
+            </div>
+
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    INGRESE LA TEMPERATURA EN GRADOS CELSIUS
+                </div>
+                <div>
+                    <input type="text" class="cajaTexto" id="txtCelsius"/>
+                </div>
+            </div>
+            <div class="botones">
+                <div class="contenedorBoton">
+                    <input type="button" value="CONVERTIR" class="estiloBoton" onclick="mostrarConversion();" />
+                </div>
+                <div class="contenedorBoton">
+                    <input type="button" value="REINICIAR" class="estiloBoton" onclick="reiniciar();" />
+                </div>
+             
+
+                
+            </div>
+
+            <div class="resultado">
+                <div>
+                    GRADOS FARENHEIT:
+                </div>
+                <div id="lblFarenheit">
+                    0
+                </div>
+               
+                <div>
+                    <img src="pensando.jpg" id="imgBandera" width="100px"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

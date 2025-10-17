@@ -1,3 +1,6 @@
+// La primera parte del código (comentada aquí) es una versión duplicada y con errores de ámbito:
+
+/*
 //No se olvide de respirar, mantenga la calma y demuestre lo que sabe
 esMayuscula = function (caracter) {
     if (caracter.length == 0) {
@@ -9,7 +12,8 @@ esMayuscula = function (caracter) {
 }
 
 guardarPalabra = function () {
-    let palabraSecreta = ' ';
+    // ESTA DECLARACIÓN HACE QUE palabraSecreta SEA LOCAL Y SE PIERDA FUERA DE LA FUNCIÓN
+    let palabraSecreta = ' '; 
     let mayuscula = 0;
     palabraSecreta = recuperarTexto("txtSecreta");
     if (palabraSecreta.length != 5) {
@@ -17,183 +21,117 @@ guardarPalabra = function () {
         return;
 
     }
-    for (let i = 0; i < palabraSecreta.length; i++) {
-        let caracter = palabraSecreta.charAt(i);
-        if (!esMayuscula(caracter)) {
-            mayuscula += 1;
-        }
-
-    }
-    if (mayuscula > 0) {
-        alert("los caracteres deben se MAYUSCULAS");
-
-    } else {
-        alert("palabra guardada correctamente");
-    }
-    mayuscula = 0;
+    // ... (El resto de la lógica de guardarPalabra)
 }
-mostrarLetra = function (letra, posicion) {
-    let cmpDiv = "div" + posicion;
-    mostrarTexto(cmpDiv, letra);
+// ... (El resto de las funciones con problemas de ámbito)
+*/
 
-}
-validar = function () {
-    let letrasEncontradas = 0;
-    let intentos = 0;
-    let coincidencias = 0;
-    let errores = 0;
-    letrasEncontradas = false;
-    let caracter;
-    for (let i = 0; i < palabraSecreta.length; i++) {
-        caracter = palabraSecreta.charAt(i);
-        if (letra == caracter) {
-            mostrarLetra(letra, i);
-            letrasEncontradas += 1;
-            coincidencias += 1;
-            letrasEncontradas = true;
+// ===================================================================================
+// INICIO DE LA VERSIÓN REVISADA Y MEJOR ORGANIZADA DEL CÓDIGO
+// ===================================================================================
 
-        }
-
-    }
-    if (!letrasEncontradas) {
-        alert("la letra no es parrte de la palabra");
-        errores += 1;
-        mostrarAhorcado();
-
-    }
-    intentos += 1;
-}
-ingresarLetra = function () {
-    let letra;
-    letra = recuperarTexto("txtLetra");
-    if (letra.length != 1) {
-        alert("debe ingresar una sola letra");
-        return;
-
-    }
-    if (esMayuscula(letra)) {
-        validar(letra);
-        if (coincidencias == palabraSecreta.length) {
-            mostrarImagen("ahorcadoImagen", "ganador.gif");
-
-        }
-        if (intentos == 10) {
-            mostrarImagen("ahorcadoImagen", "gameOver.gif");
-        }
-    } else {
-        alert("solo se aceptam MAYUSCULAS");
-    }
-
-}
-
-mostrarAhorcado = function () {
-    if (errore == 1)
-    mostrarImagen("ahorcadoImagen", "Ahorcado_01.pn");
-    
-    mostrarImagen("ahorcadoImagen", "Ahorcado_01.pn");
-
-    mostrarImagen("ahorcadoImagen", "Ahorcado_02.pn");
-
-    mostrarImagen("ahorcadoImagen", "Ahorcado_03.pn");
-
-    mostrarImagen("ahorcadoImagen", "Ahorcado_04.pn");
-
-    mostrarImagen("ahorcadoImagen", "Ahorcado_05.pn");
-
-    mostrarImagen("ahorcadoImagen", "Ahorcado_06.pn");
-
-    mostrarImagen("ahorcadoImagen", "Ahorcado_07.pn");
-
-    mostrarImagen("ahorcadoImagen", "Ahorcado_08.pn");
-
-    mostrarImagen("ahorcadoImagen", "Ahorcado_09.pn");
-
-
-}
 // PASO 0
 esMayuscula = function (caracter) {
+    // Define la función para verificar si el carácter es mayúscula.
     if (caracter.length === 0) {
+        // Si la cadena está vacía, no es mayúscula.
         return false;
     }
-    let ascii = caracter.charCodeAt(0);
+    let ascii = caracter.charCodeAt(0); // Obtiene el código ASCII del primer carácter.
+    // Retorna true si el ASCII está en el rango de A (65) a Z (90).
     return ascii >= 65 && ascii <= 90;
 }
 
 // PASO 1
-let palabraSecreta = '';
-let mayuscula = 0;
+let palabraSecreta = ''; // Variable global para almacenar la palabra secreta.
+let mayuscula = 0;       // Variable global temporal para contar caracteres no mayúsculas en 'guardarPalabra'.
 
 guardarPalabra = function () {
-    palabraSecreta = recuperarTexto('txtSecreta');
+    // Asigna el valor del campo 'txtSecreta' a la variable global 'palabraSecreta'.
+    palabraSecreta = recuperarTexto('txtSecreta'); 
     if (palabraSecreta.length != 5) {
+        // Valida que la palabra tenga 5 caracteres.
         alert('La palabra debe tener 5 caracteres');
         return;
     }
     for (let i = 0; i < palabraSecreta.length; i++) {
         let caracter = palabraSecreta.charAt(i);
         if (!esMayuscula(caracter)) {
+            // Cuenta cuántos caracteres NO son mayúsculas.
             mayuscula += 1;
         }
     }
     if (mayuscula > 0) {
+        // Si el contador es mayor a 0, hubo minúsculas.
         alert('Los caracteres deben ser MAYÚSCULAS');
     } else {
         alert('Palabra guardada correctamente');
     }
-    mayuscula = 0;
+    mayuscula = 0; // Reinicia el contador para futuros usos.
 }
 
 // PASO 2
 mostrarLetra = function (letra, posicion) {
-    let cmpDiv = 'div' + posicion;
-    mostrarTexto(cmpDiv, letra);
+    // Muestra la letra revelada en el DIV correcto.
+    let cmpDiv = 'div' + posicion; // Crea el ID del DIV (ej: 'div0', 'div1').
+    mostrarTexto(cmpDiv, letra);   // Llama a la función de interfaz para mostrar la letra.
 }
 
 // PASO 3
-let letrasEncontradas = 0;
-let intentos = 0;
-let coincidencias = 0;
-let errores = 0;
+// Variables globales de estado del juego:
+let letrasEncontradas = 0; // Contador de aciertos totales (redundante con coincidencias).
+let intentos = 0;          // Contador de letras ingresadas (aciertos + fallos).
+let coincidencias = 0;     // Contador de aciertos totales.
+let errores = 0;           // Contador de errores (fallos).
 
 validar = function (letra) {
-    let letraEncontrada = false;
+    // Valida si la letra ingresada existe en la palabra secreta.
+    let letraEncontrada = false; // Flag local para saber si esta letra ha coincidido alguna vez.
     for (let i = 0; i < palabraSecreta.length; i++) {
         let caracter = palabraSecreta.charAt(i);
         if (letra == caracter) {
+            // Si la letra coincide con un caracter en la posición 'i':
             mostrarLetra(letra, i);
-            letrasEncontradas += 1;
-            coincidencias += 1;
-            letraEncontrada = true;
+            letrasEncontradas += 1; // Incrementa el primer contador de aciertos.
+            coincidencias += 1;     // Incrementa el segundo contador de aciertos.
+            letraEncontrada = true; // Marca que se encontró la letra.
         }
     }
     if (!letraEncontrada) {
+        // Si la letra no se encontró después de revisar toda la palabra:
         alert('La letra no es parte de la palabra');
-        errores += 1;
-        mostrarAhorcado();
+        errores += 1;       // Incrementa el contador de errores.
+        mostrarAhorcado();  // Actualiza la imagen del ahorcado.
     }
-    intentos += 1;
+    intentos += 1; // Incrementa el contador total de intentos (siempre se ejecuta).
 }
 
 ingresarLetra = function () {
-    let letra = recuperarTexto('txtLetra');
+    let letra = recuperarTexto('txtLetra'); // Obtiene la letra del input.
     if (letra.length != 1) {
+        // Valida que solo sea un carácter.
         alert('Debe ingresar una sola letra');
         return;
     }
     if (esMayuscula(letra)) {
-        validar(letra);
+        // Si es mayúscula, continúa con la validación:
+        validar(letra); // Llama a 'validar' con la letra.
         if (coincidencias == palabraSecreta.length) {
+            // Lógica de victoria: si los aciertos igualan la longitud de la palabra.
             mostrarImagen('ahorcadoImagen', 'ganador.gif');
         }
         if (intentos == 10) {
+            // Lógica de derrota: si se alcanzan 10 intentos (límite establecido).
             mostrarImagen('ahorcadoImagen', 'gameOver.gif');
         }
     } else {
+        // Si no es mayúscula:
         alert('Solo se aceptan MAYÚSCULAS');
     }
 }
 
 mostrarAhorcado = function () {
+    // Muestra la imagen del ahorcado correspondiente al número actual de errores.
     if (errores == 1) mostrarImagen('ahorcadoImagen', 'Ahorcado_01.png');
     if (errores == 2) mostrarImagen('ahorcadoImagen', 'Ahorcado_02.png');
     if (errores == 3) mostrarImagen('ahorcadoImagen', 'Ahorcado_03.png');
@@ -205,18 +143,19 @@ mostrarAhorcado = function () {
     if (errores == 9) mostrarImagen('ahorcadoImagen', 'Ahorcado_09.png');
 }
 
-
 reiniciarJuego = function () {
-    palabraSecreta = '';
-    letrasEncontradas = 0;
+    // Función para reiniciar el estado del juego.
+    palabraSecreta = '';      // Reinicia la palabra secreta.
+    letrasEncontradas = 0;    // Reinicia contadores de estado.
     intentos = 0;
     coincidencias = 0;
     errores = 0;
-    mostrarTextoEnCaja("txtSecreta", "");
-    mostrarTextoEnCaja("txtLetra", "");
+    mostrarTextoEnCaja("txtSecreta", ""); // Limpia el input de la palabra secreta.
+    mostrarTextoEnCaja("txtLetra", "");   // Limpia el input de la letra.
     for (let i = 0; i < 5; i++) {
+        // Bucle para limpiar los DIVs donde se muestran las letras.
         mostrarTexto("div" + i, "");
     }
-    mostrarImagen("ahorcadoImagen", "");
-    alert("Juego reiniciado. Ingresa una nueva palabra secreta.");
+    mostrarImagen("ahorcadoImagen", ""); // Borra la imagen del ahorcado/resultado.
+    alert("Juego reiniciado. Ingresa una nueva palabra secreta."); // Notifica al usuario.
 }

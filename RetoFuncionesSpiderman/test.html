@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="retoFunciones.js"></script>
+    <script src="test.js"></script>
+</head>
+<body>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <div style="display: flex; flex: 1; flex-direction: column;">
+                <img src="logo-krakedev-rect.png" width="250px">
+                <h1 style="text-align: center;">REPASO FUNCIONES</h1>
+            </div>
+            <div style="display: flex;">
+                <img id="imgResultado" width="350px" src="https://www.latercera.com/resizer/sDZWiBfVXmWWAXUy2SQ9l2ax12w=/arc-anglerfish-arc2-prod-copesa/public/AWZCXRQ2GNBCNEEMYD6CBRQYX4.jpg"/>
+                <div style="display: flex; flex-direction: column; justify-content: space-between;" id="botones">
+                    <input type="button" value="Testear Suma"                     id="buttonTestSuma"     onclick="testSumar()"/>
+                    <input type="button" value="Testear Obtener Info"             disabled="true"  id="buttonTestObtenerInfo"           onclick="testObtenerInfo()"/>
+                    <input type="button" value="Testear Mostrar Resultado"        disabled="true"  id="buttonTestMostrarResultado"      onclick="testMostrarResultado()"/>
+                    <input type="button" value="Testear Hackear Nasa En Pelicula" disabled="true"  id="buttonTestHackearNasaEnPelicula" onclick="testHackearNasaEnPelicula()"/>
+                    <input type="button" value="Testear Calcular Edad"            disabled="true"  id="buttonTestCalcularEdad"          onclick="testCalcularEdad()"/>
+                    <input type="button" value="Testear Calcular Iva"             disabled="true"   id="buttonCalcularIVA"              onclick="testCalcularIVA()"/>
+                    <input type="button" value="Testear Repasar"                  disabled="true"   id="buttonRepasar"                  onclick="testRepasar()"/>
+                    <input type="button" value="Testear Repasar Más"              disabled="true"   id="buttonRepasarMas"               onclick="testRepasarMas()"/>
+                    <input type="button" value="Testear Llamar Atencion"          disabled="true"   id="buttonLlamarAtencion"           onclick="testLlamarAtencion()"/>
+                </div>
+            </div>
+            <input type="button" value="SIGUIENTE" hidden="true" id="buttonSiguienteTest"    onclick="siguienteTest()"/>
+            <div id="datosTesteo" style="display: none; flex-direction: column; align-items: center;  width: 100%;">
+                <h2 id="nombreTest">Hola</h1>
+                    <div style="display: flex; width: 100%;">
+                        <div style="display: flex; flex-direction: column; width: 50%; align-items: center;">
+                            <h3>Respuesta esperada</h3>
+                            <p id="respuestaEsperada"></p>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; width: 50%; align-items: center;">
+                            <h3>Respuesta recibida</h3>
+                            <p id="respuestaRecibida"></p>
+                        </div>
+                    </div>
+            </div>
+    </div>
+</body>
+</html>
