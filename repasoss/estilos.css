@@ -1,0 +1,45 @@
+/* Estilos generales */
+body { 
+
+    font-family: Arial, sans-serif; 
+    padding: 20px; 
+}
+.container { 
+    background-color: rgb(87, 179, 195);
+    background-size: 900px;
+    max-width: 600px; 
+    margin: 0 auto; 
+}
+
+/* Estilos para inputs y manejo de errores */
+input[type="text"], input[type="number"] { 
+    padding: 8px; 
+    margin-bottom: 5px; 
+    width: 100%; 
+    box-sizing: border-box; /* Asegura que padding no afecte el ancho total */
+}
+.error { 
+    color: red; 
+    font-size: 0.8em; 
+    margin-bottom: 10px; 
+} 
+button { 
+    padding: 10px 15px; 
+    margin: 5px 10px 5px 0; 
+    cursor: pointer; 
+}
+
+/* Estilos para la tabla (Parte 2) */
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 15px; 
+}
+th, td { 
+    border: 1px solid #9a5613; 
+    padding: 8px; 
+    text-align: left; 
+}
+th { 
+    background-color: #c8dc49; 
+}

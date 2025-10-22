@@ -17,18 +17,18 @@ function agregarPersona() {
     const errorNombre = document.getElementById("errorNombre");
     const errorEdad = document.getElementById("errorEdad");
 
-    
-    
+
+
     // 2. Ocultar mensajes de error anteriores antes de la validación
     errorNombre.style.display = "none";
     errorEdad.style.display = "none";
-    
+
     let esValido = true; // Flag para rastrear la validez del formulario
-    
+
     // 3. Obtener y preparar los valores de entrada
     const nombre = nombreInput.value.trim(); // Obtener nombre y eliminar espacios en blanco
     const edad = parseInt(edadInput.value); // Convertir la edad a un número entero
-    
+
     // 4. Validación del nombre
     if (nombre.length < 3) {
         // Mostrar error si el nombre tiene menos de 3 caracteres
@@ -50,19 +50,19 @@ function agregarPersona() {
     if (esValido) {
         // Crear un nuevo objeto de persona
         let nuevaPersona = {};
-        
+
         // Asignar los valores validados al nuevo objeto
         nuevaPersona.nombre = nombre;
         nuevaPersona.edad = edad;
-        
+
         // Agregar el nuevo objeto al arreglo global 'personas'
         personas.push(nuevaPersona);
-        
+
         // Notificar al usuario y limpiar los campos de entrada
         alert("PERSONA AGREGADA CORRECTAMENTE");
         nombreInput.value = '';
         edadInput.value = '';
-        
+
         // Actualizar la tabla de personas mostrada en la interfaz
         mostrarPersonas();
     }
@@ -74,10 +74,10 @@ function agregarPersona() {
 function mostrarPersonas() {
     const tablaContainer = document.getElementById('tablaPersonas'); // Contenedor donde se insertará la tabla
     let html = '<table>'; // Iniciar la cadena HTML para la tabla
-    
+
     // Encabezado (thead) de la tabla
     html += '<thead><tr><th>EDAD</th><th>NOMBRE</th></tr></thead>';
-    
+
     // Cuerpo (tbody) de la tabla
     html += '<tbody>';
     // Iterar sobre cada objeto en el arreglo 'personas'
@@ -99,19 +99,19 @@ function encontrarMayor() {
     if (personas.length === 0) return null;
 
     // 2. Inicializar: asumir que la primera persona es la mayor inicialmente
-    let personaMayor = personas[0]; 
+    let personaMayor = personas[0];
 
     // 3. Iterar a partir del segundo elemento (índice 1)
     for (let i = 1; i < personas.length; i++) {
         let elementoPersona = personas[i]; // Persona actual en la iteración
-        
+
         // Registro en consola (para depuración)
         console.log(`Posición ${i}: ${elementoPersona.nombre}, Edad: ${elementoPersona.edad}`);
 
         // 4. Comparación: si la edad actual es MAYOR que la edad de 'personaMayor'
         if (elementoPersona.edad > personaMayor.edad) {
             // Actualizar 'personaMayor' con el objeto de la persona más vieja encontrada
-            personaMayor = elementoPersona; 
+            personaMayor = elementoPersona;
         }
     }
 
@@ -124,11 +124,11 @@ function encontrarMayor() {
 // ----------------------------------------------------------------------
 function determinarMayor() {
     // 1. Ocultar el resultado del menor (si estaba visible)
-    document.getElementById("resultadoMenor").style.display ="none";
+    document.getElementById("resultadoMenor").style.display = "none";
 
     // 2. Llamar a la función lógica para obtener la persona mayor
     const mayor = encontrarMayor();
-    
+
     // 3. Mostrar el resultado
     if (mayor) {
         // Actualizar los elementos de texto con el nombre y la edad
@@ -154,7 +154,7 @@ function encontrarMenor() {
     if (personas.length === 0) return null;
 
     // 2. Inicializar: asumir que la primera persona es la menor inicialmente
-    let personaMenor = personas[0]; 
+    let personaMenor = personas[0];
 
     // 3. Iterar a partir del segundo elemento (índice 1)
     for (let i = 1; i < personas.length; i++) {
@@ -163,7 +163,7 @@ function encontrarMenor() {
         // 4. Comparación: si la edad actual es MENOR que la edad de 'personaMenor'
         if (elementoPersona.edad < personaMenor.edad) {
             // Actualizar 'personaMenor' con el objeto de la persona más joven encontrada
-            personaMenor = elementoPersona; 
+            personaMenor = elementoPersona;
         }
     }
 
@@ -177,17 +177,17 @@ function encontrarMenor() {
 function determinarMenor() {
     // 1. Ocultar el resultado del mayor (si estaba visible)
     document.getElementById("resultadoMayor").style.display = "none";
-    
+
     // 2. Llamar a la función lógica para obtener la persona menor
     const menor = encontrarMenor();
-    
+
     // 3. Mostrar el resultado
     if (menor) {
         // Actualizar los elementos de texto con el nombre y la edad
         document.getElementById("nombreMenor").textContent = menor.nombre;
         document.getElementById("edadMenor").textContent = menor.edad;
         // Hacer visible el contenedor de resultados
-        document.getElementById("resultadoMenor").style.display ="block";
+        document.getElementById("resultadoMenor").style.display = "block";
     } else {
         // Ocultar el contenedor y alertar si no hay personas
         document.getElementById("resultadoMenor").style.display = "none";

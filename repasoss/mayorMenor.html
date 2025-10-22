@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="utilitarios.js"></script>
+    <script src="mayorMenor.js"></script>
+
+
+    <title>Evaluacion Individual</title>
+
+
+</head>
+
+<body onload="mostrarPersonas()">
+
+    <div class="container">
+
+
+        <section>
+            <h2>Agregar Persona</h2>
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="txtNombre" placeholder="Nombre (minimo 3 caracteres)">
+            <div id="errorNombre" class="error"></div>
+
+            <label for="edad">Edad:</label>
+            <input type="number" id="txtEdad" placeholder="Edad (entero entre 0 y 100)">
+            <div id="errorEdad" class="error"></div>
+
+            <button type="button" onclick="agregarPersona()">GUARDAR</button>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Listado de Personas (Edad, Nombre)</h2>
+            <div id="tablaPersonas">
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Busqueda por Edad</h2>
+            <button type="button" onclick="determinarMayor()">ENCONTRAR MAYOR</button>
+            <p><strong>Persona Mayor:</strong> <span id="resultadoMayor"></span></p>
+
+            <button type="button" onclick="determinarMenor()">ENCONTRAR MENOR</button>
+            <p><strong>Persona Menor:</strong> <span id="resultadoMenor"></span></p>
+        </section>
+
+    </div>
+
+
+
+</body>
+
+</html>

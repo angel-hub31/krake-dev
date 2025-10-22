@@ -1,0 +1,86 @@
+/**/
+
+body {
+    background-image: url("cintaa.jpg");
+    /* inserta una imagen*/
+    background-repeat: no-repeat;
+    /*hace que no se repita la imagen*/
+    background-size: cover;
+    /*hace que la imagen ocupe todo la pantalla*/
+    font-family: Arial, Helvetica, sans-serif;
+    /*es para darle el tipo de letra*/
+    margin: 20px;
+    /* Separa el contenido del elemento de su borde.*/
+   /* background-color: rgb(135, 15, 69);
+    crea una linea por debajo del textodel color de preferencia*/
+
+}
+
+.container {
+    max-width: 1100px;
+    /* Limita el ancho máximo del contenedor a 1000 píxeles. */
+    margin: 0 auto;
+    /* Centra el contenedor horizontalmente (0 arriba/abajo, auto izquierda/derecha). */
+    background: aliceblue;
+    /* Establece el color de fondo del contenedor como aliceblue. */
+    padding: 140px;
+    /* Añade un relleno de 30px dentro del contenedor. */
+    border-radius: 40px;
+    /* Redondea las esquinas del contenedor 40 píxeles. */
+    box-shadow: 0 4px 8px green;
+    /* Aplica una sombra sutil para darle elevación. */
+}
+
+h2 {
+    color: brown;
+    /* toda texto en h2 cambia de color */
+    border-bottom: 3px  solid rgb(140, 20, 144);
+    /* Crea una línea divisoria azul claro de 2px de grosor. */
+    padding-bottom: 10px;
+    /* Añade 10px de espacio entre el texto del título y la línea divisoria. */
+}
+
+.cajaTexto {
+    margin-bottom: 10px;
+    width: 75%;
+
+}
+
+label {
+    display: block;
+    /* Fuerza a la etiqueta a ocupar toda la línea (rompe la línea). */
+    margin-bottom: 5px;
+    /* Añade un margen de 5px debajo de la etiqueta. */
+    font-weight: bold;
+    /* Hace que el texto de la etiqueta sea negrita. */
+}
+.btn{
+    display: block;/*hace que el botton se ponga en columna*/
+    margin-bottom: 10px;/**/
+}
+table{
+    width: 75%; /* La tabla ocupa el 100% del ancho de su contenedor. */
+border-collapse: collapse;/* Asegura que las celdas compartan bordes, eliminando bordes dobles. */
+margin-top: 20px; /* Añade un margen de 20px encima de la tabla. */
+}
+td,th{
+    border: 2px solid rgb(98, 161, 175);/* Aplica un borde sólido de 1px color rojo oscuro a cada celda. */
+    padding: 10px;/* Añade 8px de relleno interno a las celdas. */
+    text-align: left;/* Alinea el texto a la izquierda en las celdas. */
+}
+th{
+    background-color: brown;/* Establece el fondo de los encabezados a rojo oscuro. */
+    color: rgb(11, 158, 53) /* Establece el color del texto de los encabezados a gris oscuro. */
+
+}
+
+.resultado{
+    margin-top: 20px; /* Añade un margen de 20px encima de la caja. */
+    padding: 15px;/* Añade 15px de relleno dentro de la caja. */
+    border: 2px blue;
+    border-left: 10px red;
+    background-color: yellowgreen;
+    border-radius: 8px;
+    display: block;
+}
+    

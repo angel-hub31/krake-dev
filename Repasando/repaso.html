@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="repaso.css">
+    <script src="utilitarios.js"></script>
+    <script src="repaso.js"></script>
+
+</head>
+
+
+<body onload="mostrarPersonas()">
+    <div class="container">
+        <div class="titulo">
+            <h2>Calificacion Alta y Baja</h2>
+        </div>
+
+        <h3>Agregar Persona</h3>
+        <div class="cajaTexto">
+            <label for="txtNombre">Nombre</label>
+            <input type="text" id="txtNombre" placeholder="Ingrese Nombre" />
+            <div id="errorNombre" style="display:none; "></div>
+
+
+            <label for="txtNota">Nota</label>
+            <input type="text" id="txtNota" placeholder="Ingrese Nota" />
+            <div id="errorNota" style="display:none; "></div>
+
+
+            <label for="txtSexo">Sexo</label>
+            <input type="text" id="txtGenero" placeholder="Ingrese Genero" />
+            <div id="errorGenero" style="display:none; "></div>
+        </div>
+        <div class="btn">
+            <input type="button" value="Guardar" onclick="agregarPersona();" />
+        </div>
+
+        <h2>Listado de personas</h2>
+        <div id="tablaPersonas"></div>
+        <h2>Resultados</h2>
+        <input type="button" value="Encontrar Mayor" onclick="determinarMayor();" />
+        <input type="button" value="Encontrar Menor" onclick="determinarMenor();" />
+        <div class="resultado">
+            <div id="resultadoMayor" style="display:none;">
+                Nombre: <span id="nombreMayor"></span>
+                Nota: <span id="notaMayor"></span>
+                Género: <span id="generoMayor"></span>
+            </div>
+
+            <div id="resultadoMenor" style="display:none;">
+                Nombre:<span id="nombreMenor"></span>
+                Nota:<span id="notaMenor"></span>
+                Género: <span id="generoMenor"></span>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
