@@ -1,6 +1,7 @@
 /* Logos fijos a los lados */
 #logo-izquierdo,
 #logo-derecho {
+ 
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
@@ -10,11 +11,12 @@
 }
 
 #logo-izquierdo {
-  left: 10px;
+  left: 50px;
+
 }
 
 #logo-derecho {
-  right: 10px;
+  right: 50px;
 }
 
 /* Evitar que el contenido quede debajo de los logos */
@@ -27,6 +29,8 @@ body {
   margin: 0;
   padding-top: 20px;
   padding-bottom: 20px;
+  display: block;
+  
 }
 
 /* Menú */
@@ -75,6 +79,15 @@ button {
   width: 100%;
   max-width: 400px;
   box-sizing: border-box;
+}
+
+button {
+  display: block;
+  width: 150px; /* Ajusta este valor al tamaño que desees (ejemplo: 200px) */
+  margin: 0 auto; /* Lo centra horizontalmente */
+
+  /* Opcional: Centrar el texto dentro del botón si es necesario */
+  text-align: center;
 }
 
 /* Botones */
