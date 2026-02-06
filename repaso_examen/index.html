@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Juego de Autos - Solo Dados (sin objetos)</title>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+
+<body>
+
+  <h1> Carrera de Autos (0 a 20)</h1>
+
+  <section class="hud">
+
+    <div class="jugador">
+      <h2>Auto 1</h2>
+      <p>Posición: <b id="pos1">0</b></p>
+      <div class="filaGasolina">
+        <span class="iconoGasolina"></span>
+        <progress id="gasolina1" max="40" value="40"></progress>
+        <span id="textoGasolina1">40/40</span>
+      </div>
+      <p class="detalle">Consumo: <b>3 L</b> por casilla</p>
+      <button id="btnAuto1"> Lanzar dado</button>
+    </div>
+
+    <div class="jugador">
+      <h2>Auto 2</h2>
+      <p>Posición: <b id="pos2">0</b></p>
+      <div class="filaGasolina">
+        <span class="iconoGasolina"></span>
+        <progress id="gasolina2" max="50" value="50"></progress>
+        <span id="textoGasolina2">50/50</span>
+      </div>
+      <p class="detalle">Consumo: <b>4 L</b> por casilla</p>
+      <button id="btnAuto2"> Lanzar dado</button>
+    </div>
+
+    <div class="cajaReiniciar">
+      <p class="tituloCaja">REINICIAR JUEGO</p>
+      <input type="button" value="REINICIAR" onclick="reiniciarJuego()">
+    </div>
+
+
+    </div>
+
+
+  </section>
+
+
+  <section class="dados">
+    <div class="cajaDado">
+      <p class="tituloCaja">Dado de movimiento</p>
+      <img id="imgDadoMovimiento" src="img/dado1.png" alt="dado movimiento">
+      <p>Valor: <b id="valorDadoMovimiento">1</b></p>
+      <p class="detalle">1..4 avanza | 5 retrocede 1 | 6 gana gasolina</p>
+    </div>
+
+
+
+    <div class="cajaDado oculta" id="cajaGasolina" aria-hidden="true">
+      <p class="tituloCaja">Dado de gasolina</p>
+      <img id="imgDadoGasolina" src="img/dadoGasolina.png" alt="dado gasolina">
+      <p>Carga: <b id="valorGasolinaCargada">0</b> L</p>
+      <button id="btnLanzarGasolina"> Lanzar dado de gasolina</button>
+      <p class="detalle">Posibles: 1, 3, 5, 10</p>
+    </div>
+  </section>
+
+  <section class="tableroWrap">
+    <h2>Tablero</h2>
+    <p class="detalle">Ambos autos empiezan en <b>0</b>. La meta es <b>20</b> (🏁).</p>
+    <section id="tablero" class="tablero"></section>
+  </section>
+
+  <div class="modalFondo" id="modalFondo" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true">
+      <h3 id="tituloModal"></h3>
+      <p id="mensajeModal"></p>
+      <button id="btnCerrarModal">OK</button>
+    </div>
+  </div>
+
+  <script src="juego.js"></script>
+</body>
+
+</html>

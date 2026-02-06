@@ -19,7 +19,7 @@ probarAtributo = function () {
 
 probarAtributo1 = function () {
 
-   for(let i=1; i<=5;i++){
+   for(let i=0; i<0;i++){
   
     console.log(i);
    }

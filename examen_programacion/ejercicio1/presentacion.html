@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <scrip src="presentacion.js"></scrip>
+ <link rel="stylesheet" href="presentacion.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Examen</title>
+
+  <link rel="stylesheet" href="presentacion.css" />
+</head>
+<body>
+  <main class="card">
+    <h1 class="title">INTRODUCCION A LA PROGRAMACION</h1>
+    <p class="subtitle">ANGEL SEGUNDO MORALES MALES</p>
+
+    <section class="michi-zone" aria-label="Espacio para el michi hacker">
+      <img src="hacker.png" width="200px"/>
+    </section>
+
+    <section class="form">
+      <label class="label" for="nombreInput">ANGEL SEGUNDO MORALES MALES</label>
+      <input
+        id="nombreInput"
+        class="input"
+        type="text"
+        placeholder="Escribe tu nombre aquí..."
+        autocomplete="off"
+      />
+
+      <!-- ✅ Evento desde HTML -->
+      <button id="iniciarBtn" class="btn" type="button" onclick="iniciar()">INICIAR</button>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="modalOverlay" class="modal-overlay hidden" aria-hidden="true" onclick="clicFondo(event)">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <h2 id="modalTitle" class="modal-title">BIENVENIDO</h2>
+      <p id="modalMessage" class="modal-message">...</p>
+
+      <div class="modal-actions">
+        <button class="btn btn-secondary" type="button" onclick="cerrarModal()">CERRAR</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="presentacion.js"></script>
+</body>
+</html>

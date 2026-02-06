@@ -596,6 +596,8 @@ function agregarAlCarrito(nombreProducto) {
         return;
     }
 
+
+   // "prompt" en JavaScript es una función que realiza la acción de mostrar un cuadro de diálogo interactivo al usuario para solicitarle que ingrese un valor o información.//
     const cantidadStr = prompt(`¿Cuántas unidades de "${nombreProducto}" desea agregar? (Stock disponible: ${productoEnStock.stock})`);
     
     // Si el usuario presiona Cancelar o cierra el prompt

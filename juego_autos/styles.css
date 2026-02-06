@@ -1,0 +1,213 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f4f6;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+h1 {
+  margin: 0;
+}
+
+.contenedor-juego {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 900px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Pista */
+#pista {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.casilla {
+  height: 45px;
+  border-radius: 6px;
+  border: 1px solid #d4d4d4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  position: relative;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.casilla.gasolina5 {
+  background: #e0ffe0;
+  border-color: #22c55e;
+  font-weight: bold;
+}
+
+.casilla.gasolina10 {
+  background: #dcfce7;
+  border-color: #16a34a;
+  font-weight: bold;
+}
+
+.casilla.tanque {
+  background: #dbeafe;
+  border-color: #3b82f6;
+  font-weight: bold;
+}
+
+.casilla.meta {
+  background: #fee2e2;
+  border-color: #ef4444;
+  font-weight: bold;
+}
+
+.auto-img {
+  position: absolute;
+  bottom: 2px;
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+
+.auto1-img {
+  left: 2px;
+}
+
+.auto2-img {
+  right: 2px;
+}
+
+/* Paneles de autos */
+.paneles {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.panel-jugador {
+  flex: 1 1 260px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.panel-jugador h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.panel-jugador p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.gasolina-medidor {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #6b7280;
+  margin-bottom: 2px;
+  padding: 0 2px;
+}
+
+.gasolina-barra {
+  width: 100%;
+  height: 16px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.gasolina-barra-inner {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, #22c55e, #16a34a);
+  transition: width 0.25s;
+}
+
+#mensajes {
+  min-height: 40px;
+  padding: 10px;
+  background: #eef2ff;
+  border-radius: 8px;
+  border: 1px solid #c7d2fe;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  background: #4f46e5;
+  color: white;
+  font-weight: bold;
+  transition: transform 0.1s, box-shadow 0.1s, background 0.2s;
+  margin-right: 6px;
+}
+
+button:hover {
+  background: #4338ca;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.turno-actual {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.contenedor-pruebas {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  max-width: 900px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.contenedor-pruebas h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.fila-prueba {
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+.fila-prueba input {
+  padding: 4px 6px;
+  border-radius: 4px;
+  border: 1px solid #d4d4d8;
+  width: 60px;
+  margin-right: 6px;
+}

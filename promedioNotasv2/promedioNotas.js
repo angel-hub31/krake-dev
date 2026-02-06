@@ -1,21 +1,11 @@
 calcularPromedioNotas = function () {
-    // 1. Recupera el valor del campo "txtNota1" y lo convierte a un número flotante.
-    let nota1 = recuperarFlotante("txtNota1");
-    
-    // 2. Recupera el valor del campo "txtNota2" y lo convierte a un número flotante.
-    let nota2 = recuperarFlotante("txtNota2");
-    
-    // 3. Recupera el valor del campo "txtNota3" y lo convierte a un número flotante.
-    let nota3 = recuperarFlotante("txtNota3");
-    
-    // 4. Llama a la función auxiliar para calcular el promedio de las tres notas.
-    promedio = calcularPromedio(nota1, nota2, nota3);
-    
-    // 5. Formatea el promedio a una cadena con exactamente dos decimales.
-    resultadoFormateado = promedio.toFixed(2);
+    let nota1 = recuperarFlotante("txtNota1");    // 1. Recupera el valor del campo "txtNota1" y lo convierte a un número flotante.
+    let nota2 = recuperarFlotante("txtNota2");    // 2. Recupera el valor del campo "txtNota2" y lo convierte a un número flotante.
+    let nota3 = recuperarFlotante("txtNota3");    // 3. Recupera el valor del campo "txtNota3" y lo convierte a un número flotante.
+    promedio = calcularPromedio(nota1, nota2, nota3);    // 4. Llama a la función auxiliar para calcular el promedio de las tres notas.
+    resultadoFormateado = promedio.toFixed(2);    // 5. Formatea el promedio a una cadena con exactamente dos decimales.
+    mostrarTexto("lblPromedio", resultadoFormateado);    // 6. Muestra el promedio formateado en la etiqueta con ID "lblPromedio".
 
-    // 6. Muestra el promedio formateado en la etiqueta con ID "lblPromedio".
-    mostrarTexto("lblPromedio", resultadoFormateado);
     
     // 7. Inicia la lógica condicional para determinar el mensaje y la imagen (REPROBADO).
     // Condición: Si el promedio está entre 0 (no inclusivo) y 5 (no inclusivo).

@@ -1,19 +1,15 @@
 <!DOCTYPE html>
-
 <head>
-    
     <title>Piedra Papel o Tijera</title>
     <link rel="stylesheet" href="juego.css">
     <script src="juego.js" defer></script>
     <script src="serviciosJuego.js" defer></script>
     <script src="utilitarios.js" defer></script>
 </head>
-
 <body>
     <div class="titulo">
         JUEGA PIEDRA PAPEL O TIJERA
     </div>
-
     <div class="puntos">
         <div class="pJugador">
             <div>Puntos Jugador: </div>
@@ -24,7 +20,6 @@
             <div id="puntosPc">0</div>
         </div>
     </div>
-
     <div class="cmpJugador">
         <div class="contenedorImg" onclick="jugar('piedra')">
             <img src="./imagenes/piedra.png" width="50" alt="Piedra">
@@ -36,19 +31,15 @@
             <img src="./imagenes/tijera.png" width="50" alt="Tijera">
         </div>
     </div>
-
     <div class="cmpPc">
         <div>
             <img src="./imagenes/2.png" width="50" alt="Computadora" id="imgPc">
         </div>
     </div>
-
     <div class="cmpResultado">
         <div class="partida" id="partida"></div>
     </div>
-
     <div class="resultado" id="resultado"></div>
-
     <div class="nuevaPartida">
         <input class="boton" type="button" value="Nueva partida" onclick="limpiarDatos()">
     </div>

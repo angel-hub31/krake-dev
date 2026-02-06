@@ -1,0 +1,106 @@
+body { font-family: system-ui, Arial; margin: 20px; }
+h1 { margin-bottom: 12px; }
+
+.hud { display: flex; gap: 18px; flex-wrap: wrap; }
+.jugador { border: 1px solid #ddd; padding: 12px; border-radius: 14px; width: 260px; background: #fff; }
+.filaGasolina { display: flex; align-items: center; gap: 8px; }
+.iconoGasolina { font-size: 18px; }
+progress { width: 150px; height: 16px; }
+.detalle { font-size: 12px; opacity: .8; margin: 6px 0 0; }
+button { margin-top: 10px; padding: 8px 10px; border-radius: 10px; border: 1px solid #ddd; background: #fff; cursor: pointer; }
+button:disabled { opacity: .55; cursor: not-allowed; }
+
+.dados { display: flex; gap: 18px; margin: 16px 0; flex-wrap: wrap; }
+.cajaDado { border: 1px solid #ddd; padding: 12px; border-radius: 14px; width: 320px; background: #fff; }
+.tituloCaja { margin: 0 0 6px 0; font-weight: 700; }
+.cajaDado img { width: 64px; height: 64px; object-fit: contain; border: 1px solid #eee; border-radius: 12px; padding: 6px; background: #fafafa; }
+.oculta { display: none; }
+
+.tableroWrap { margin-top: 10px; }
+.tablero { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+
+.casilla {
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  padding: 8px;
+  min-height: 78px;
+  background: #fff;
+  position: relative;
+}
+.numeroCasilla {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 12px;
+  opacity: .65;
+}
+.zonaAutos {
+  margin-top: 20px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.autoImg {
+  width: 52px;
+  height: 34px;
+  object-fit: contain;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 2px 4px;
+  background: #fafafa;
+}
+/* Estilo para la caja de reinicio */
+.cajaReiniciar {
+  border: 2px solid #ffeded; /* Un tono rojizo suave para indicar acción de 'reset' */
+  padding: 12px;
+  border-radius: 14px;
+  width: 200px; /* Un poco más estrecha que las otras */
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.cajaReiniciar .tituloCaja {
+  color:darkgoldenrod; /* Texto en rojo para el título */
+  margin-bottom: 8px;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+/* Estilo específico para el botón (input type="button") */
+.cajaReiniciar input[type="button"] {
+  background-color:darkcyan;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s;
+  width: 100%;
+}
+
+.cajaReiniciar input[type="button"]:hover {
+  background-color:darkcyan;
+}
+
+.cajaReiniciar input[type="button"]:active {
+  transform: scale(0.95); /* Efecto de pulsado */
+}
+
+/* Resaltado y meta */
+.casilla.meta { outline: 2px dashed #999; }
+.casilla.meta .numeroCasilla::after { content: "  🏁 META"; font-weight: 700; opacity: .9; }
+.casilla.actual { box-shadow: 0 0 0 3px rgba(0,0,0,.12); }
+.casilla.actualAuto1 { box-shadow: 0 0 0 3px rgba(0,0,0,.10), inset 0 0 0 3px rgba(0, 140, 0, .18); }
+.casilla.actualAuto2 { box-shadow: 0 0 0 3px rgba(0,0,0,.10), inset 0 0 0 3px rgba(0, 0, 180, .18); }
+.casilla.actualAmbos { box-shadow: 0 0 0 3px rgba(0,0,0,.10), inset 0 0 0 3px rgba(200, 120, 0, .22); }
+
+/* Modal */
+.modalFondo { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45); place-items: center; }
+.modalFondo.show { display: grid; }
+.modal { background: #fff; padding: 14px; border-radius: 14px; width: min(420px, 92vw); }

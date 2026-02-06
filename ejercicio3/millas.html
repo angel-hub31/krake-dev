@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Millas</title>
+  <link rel="stylesheet" href="millas.css" />
+</head>
+<body>
+
+  <main class="card">
+    <h1 class="title">Sistema de Millas</h1>
+    <p class="subtitle">Creación e invocación de funciones</p>
+
+    <p class="aclaracion">
+      <strong>Importante:</strong><br>
+      Este ejercicio valida la correcta creación e invocación de funciones.
+      El objetivo es modificar la variable <strong>millas</strong>, controlar límites,
+      cambiar la categoría y convertir millas a dólares solo cuando se solicite.
+    </p>
+
+    <section class="estado">
+      <div>
+        <h2 class="sectionTitle">Estado actual</h2>
+        <h1 id="h1Millas" class="millas">Millas: 0</h1>
+        <p id="pCategoria" class="categoria">Categoría: BÁSICO</p>
+        <p id="pMensaje" class="mensaje">Mensaje: listo</p>
+      </div>
+
+      <div class="estado-right">
+        <h2 class="sectionTitle">Imagen</h2>
+        <img id="imgCategoria" class="imgCategoria" alt="Básico">
+      </div>
+    </section>
+
+    <section class="panel">
+      <label class="label" for="txtCantidad">Cantidad</label>
+      <input id="txtCantidad" class="input" type="text" placeholder="Ej: 5" />
+      <small class="hint">Máximo permitido: 50 millas</small>
+    </section>
+
+    <section class="botones">
+      <button class="btn" onclick="">Ganar millas</button>
+      <button class="btn" onclick="">Canjear millas</button>
+      <button class="btn" onclick="probarGanar5()">+5 millas</button>
+      <button class="btn" onclick="probarPerderDiez()">-10 millas</button>
+      <button class="btn btn2" onclick="probarConvertir()">Convertir a dólares</button>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="modalOverlay" class="modal-overlay hidden" onclick="clicFondo(event)">
+    <div class="modal">
+      <h2 class="modal-title">Conversión de Millas</h2>
+      <p id="modalMessage" class="modal-message"></p>
+      <button class="btn btn-secondary" onclick="cerrarModal()">CERRAR</button>
+    </div>
+  </div>
+
+  <script src="millas.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laboratorio - Invocación de Funciones</title>
+  <link rel="stylesheet" href="invocacion.css" />
+</head>
+<body>
+
+  <main class="card">
+    <h1 class="title">Laboratorio de Funciones</h1>
+    <p class="subtitle">Toma datos, parsea números, invoca funciones, guarda retornos y muestra resultados.</p>
+
+    <p class="aclaracion">
+      <strong>Importante:</strong><br>
+      Estas funciones <strong>no tienen conexión entre sí</strong> y puede que no tengan un sentido práctico real.
+      El objetivo es comprobar que sabes:
+      tomar datos de cajas de texto, parsear a entero o flotante, invocar funciones, pasar parámetros correctamente
+      y si la función retorna, guardar el retorno y mostrarlo en pantalla.
+    </p>
+
+    <section class="panel">
+      <div class="fila">
+        <div class="campo">
+          <label class="label" for="txtCadena1">Texto 1</label>
+          <input id="txtCadena1" class="input" type="text    " placeholder="Escribe un texto" />
+        </div>
+        <div class="campo">
+          <label class="label" for="txtCadena2">Texto 2</label>
+          <input id="txtCadena2" class="input" type="text" placeholder="Escribe un texto" />
+        </div>
+      </div>
+
+      <div class="fila">
+        <div class="campo">
+          <label class="label" for="txtNum1">Número 1</label>
+          <input id="txtNum1" class="input" type="text" placeholder="Ej: 10 o 10.5" />
+        </div>
+        <div class="campo">
+          <label class="label" for="txtNum2">Número 2</label>
+          <input id="txtNum2" class="input" type="text" placeholder="Ej: 3 o 3.2" />
+        </div>
+      </div>
+    </section>
+
+    <section class="resultados">
+      <h2 class="sectionTitle">Salida</h2>
+      <h1 id="h1Resultado" class="resultado">Resultado aquí...</h1>
+    
+    </section>
+
+    <section class="botones">
+      <button class="btn" onclick="probar1()">probar1</button>
+      <button class="btn" onclick="probar2()">probar2</button>
+      <button class="btn" onclick="probar3()">probar3</button>
+      <button class="btn" onclick="probar4()">probar4</button>
+      <button class="btn" onclick="probar5()">probar5</button>
+      <button class="btn" onclick="probar6()">probar6</button>
+      <button class="btn" onclick="probar7()">probar7</button>
+      <button class="btn" onclick="probar8()">probar8</button>
+      <button class="btn" onclick="probar9()">probar9</button>
+    </section>
+  </main>
+
+  <script src="invocacion.js"></script>
+</body>
+</html>

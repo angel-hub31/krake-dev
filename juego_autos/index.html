@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Juego del Auto - Dos Jugadores</title>
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Juego del Auto 🏎️</h1>
+
+  <div class="contenedor-juego">
+    <div id="pista"></div>
+
+    <div class="paneles">
+      <!-- Panel Auto 1 -->
+      <div class="panel-jugador" id="panel-j1">
+        <h2>Auto 1 (Azul)</h2>
+        <div class="gasolina-medidor">
+          <span>0</span>
+          <span>10</span>
+          <span>20</span>
+          <span>30</span>
+        </div>
+        <div class="gasolina-barra">
+          <div id="barra-gasolina-1" class="gasolina-barra-inner"></div>
+        </div>
+        <p id="texto-gasolina-1"></p>
+        <p id="texto-posicion-1"></p>
+        <p id="texto-dado-1"></p>
+        <p id="texto-gasto-1"></p>
+        <p id="texto-extra-1"></p>
+        <button id="btn-jugar-1" onclick="jugarAuto1()">Jugar Auto 1</button>
+      </div>
+
+      <!-- Panel Auto 2 -->
+      <div class="panel-jugador" id="panel-j2">
+        <h2>Auto 2 (Naranja)</h2>
+        <div class="gasolina-medidor">
+          <span>0</span>
+          <span>10</span>
+          <span>20</span>
+          <span>30</span>
+          <span>40</span>
+        </div>
+        <div class="gasolina-barra">
+          <div id="barra-gasolina-2" class="gasolina-barra-inner"></div>
+        </div>
+        <p id="texto-gasolina-2"></p>
+        <p id="texto-posicion-2"></p>
+        <p id="texto-dado-2"></p>
+        <p id="texto-gasto-2"></p>
+        <p id="texto-extra-2"></p>
+        <button id="btn-jugar-2" onclick="jugarAuto2()">Jugar Auto 2</button>
+      </div>
+    </div>
+
+    <div class="turno-actual" id="turno"></div>
+    <div id="mensajes"></div>
+
+    <button onclick="reiniciar()">Reiniciar juego</button>
+  </div>
+
+  <!-- SECCIÓN DE PRUEBAS DE FUNCIONES -->
+  <div class="contenedor-pruebas">
+    <h2>Pruebas de funciones de los alumnos</h2>
+    <p>
+      Puedes probar directamente las funciones
+      <code>llenarTanque1</code>, <code>llenarTanque2</code>,
+      <code>cargarGasolina1</code>, <code>cargarGasolina2</code>,
+      <code>avanzar1</code>, <code>avanzar2</code> y <code>reiniciar</code>.
+    </p>
+
+    <div class="fila-prueba">
+      <button onclick="probarLlenarTanque1()">Probar llenarTanque1 (Auto 1)</button>
+      <button onclick="probarLlenarTanque2()">Probar llenarTanque2 (Auto 2)</button>
+    </div>
+
+    <div class="fila-prueba">
+      <input id="input-gas-1" type="number" value="5" min="0">
+      <button onclick="probarCargarGasolina1()">Probar cargarGasolina1(cantidad)</button>
+    </div>
+
+    <div class="fila-prueba">
+      <input id="input-gas-2" type="number" value="10" min="0">
+      <button onclick="probarCargarGasolina2()">Probar cargarGasolina2(cantidad)</button>
+    </div>
+
+    <div class="fila-prueba">
+      <input id="input-pasos-1" type="number" value="2" min="0">
+      <button onclick="probarAvanzar1()">Probar avanzar1(pasos)</button>
+    </div>
+
+    <div class="fila-prueba">
+      <input id="input-pasos-2" type="number" value="3" min="0">
+      <button onclick="probarAvanzar2()">Probar avanzar2(pasos)</button>
+    </div>
+
+    <div class="fila-prueba">
+      <button onclick="probarReiniciar()">Probar reiniciar()</button>
+    </div>
+  </div>
+
+</body>
+</html>

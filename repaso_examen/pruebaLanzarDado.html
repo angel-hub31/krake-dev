@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Prueba lanzarDado</title>
+</head>
+<body>
+
+  <h2>Prueba lanzarDado</h2>
+
+  <label>
+    Mínimo:
+    <input type="number" id="min" value="1">
+  </label>
+
+  <br><br>
+
+  <label>
+    Máximo:
+    <input type="number" id="max" value="6">
+  </label>
+
+  <br><br>
+
+  <button onclick="probar()">lanzarDado</button>
+
+  <h3>Resultado:</h3>
+  <div id="resultado">-</div>
+
+  <!-- Cargar tu lógica -->
+  <script src="juego.js"></script>
+
+  <script>
+    function probar() {
+      const min = Number(document.getElementById("min").value);
+      const max = Number(document.getElementById("max").value);
+
+      // 👉 función tomada desde juego.js
+      const retorno = lanzarDado(min, max);
+
+      document.getElementById("resultado").textContent = retorno;
+    }
+  </script>
+
+</body>
+</html>
