@@ -156,3 +156,5 @@ mostrarEmpleados = function() {
     }
     document.getElementById("tablaEmpleados").innerHTML = tabla + "</table>";
 }
+
+
