@@ -1,5 +1,4 @@
 (function () {
-    // === Variables Globales y Constantes ===
 
     // Array principal que almacena los objetos de los empleados.
     let empleados = [
@@ -9,19 +8,10 @@
         { cedula: "1054321098", nombre: "PEDRO", apellido: "PASCAL", sueldo: 1200.0 }
     ];
 
-    // Array para almacenar los roles de pago calculados (incluye detalles de aportes y pago).
     let roles = [];
-
-    // Variable para almacenar el empleado que se está procesando actualmente en la sección de Rol de Pago.
     let empleadoEnRol = null;
-
-    // Bandera booleana para indicar si se está creando un nuevo empleado (true) o modificando uno existente (false).
     let esNuevo = false;
-
-    // Constante para el porcentaje de aporte al IESS (Instituto Ecuatoriano de Seguridad Social) del empleado (9.45%).
     const PORCENTAJE_IESS_EMPLEADO = 0.0945;
-
-    // Constante para el porcentaje de aporte al IESS que cubre la empresa (11.15%).
     const PORCENTAJE_IESS_EMPRESA = 0.1115;
 
     // === Funciones de Utilidad y Estado de UI (Se asume la existencia de las funciones: recuperarTexto, recuperarFloat,
@@ -35,20 +25,13 @@
      */
     actualizarEstadoEmpleado = function (habilitar) {
         const campos = ["txtCedula", "txtNombre", "txtApellido", "txtSueldo"];
-
-        // 1. Limpia los campos de texto del empleado y oculta sus errores.
-        campos.forEach(id => {
+        campos.forEach(id => {        // 1. Limpia los campos de texto del empleado y oculta sus errores.
             limpiarTexto(id);
-            // El id del label de error se construye a partir del id del campo (ej: txtCedula -> lblErrorCedula)
-            ocultarError(`lblError${id.substring(3)}`);
+            ocultarError(`lblError${id.substring(3)}`);            // El id del label de error se construye a partir del id del campo (ej: txtCedula -> lblErrorCedula)
         });
-
-        // 2. Limpia y oculta errores del campo de búsqueda de cédula.
-        ocultarError("lblErrorBusqueda");
+        ocultarError("lblErrorBusqueda");        // 2. Limpia y oculta errores del campo de búsqueda de cédula.
         limpiarTexto("txtBusquedaCedula");
-
-        // 3. Habilita o deshabilita los campos de entrada de datos del empleado.
-        campos.forEach(id => {
+        campos.forEach(id => {        // 3. Habilita o deshabilita los campos de entrada de datos del empleado.
             if (habilitar) {
                 habilitarComponente(id);
             } else {
@@ -56,15 +39,15 @@
             }
         });
 
-        // 4. Habilita o deshabilita el botón de Guardar.
-        if (habilitar) {
+        if (habilitar) {        // 4. Habilita o deshabilita el botón de Guardar.
+
             habilitarComponente("btnGuardar");
         } else {
             deshabilitarComponente("btnGuardar");
         }
 
-        // 5. Configuración específica para el estado deshabilitado (listo para nueva búsqueda o nuevo registro).
-        if (!habilitar) {
+        if (!habilitar) {        // 5. Configuración específica para el estado deshabilitado (listo para nueva búsqueda o nuevo registro).
+
             habilitarComponente("txtBusquedaCedula"); // Permite buscar
             habilitarComponente("btnNuevo"); // Permite iniciar un nuevo registro
         }
@@ -76,8 +59,8 @@
      * @returns {boolean} - true si es válido, false en caso contrario.
      */
     esSoloMayusculas = function (texto) {
-        // Expresión regular: ^[A-Z\s]+$ -> solo mayúsculas (A-Z) y espacios (\s).
-        return texto.trim().length >= 3 && /^[A-Z\s]+$/.test(texto.trim());
+        return texto.trim().length >= 3 && /^[A-Z\s]+$/.test(texto.trim());        // Expresión regular: ^[A-Z\s]+$ -> solo mayúsculas (A-Z) y espacios (\s).
+
     }
 
     // === Lógica de Validación de Empleado ===
@@ -141,12 +124,6 @@
         return empleados.find(e => e.cedula === cedula);
     }
 
-    /**
-     * Función que ejecuta la búsqueda de un empleado por la cédula ingresada en la caja de búsqueda.
-     * Si lo encuentra, carga los datos en el formulario y habilita la modificación.
-     * (Esta función está duplicada/redefinida más abajo, se mantiene la última versión activa).
-     */
-    // ejecutarBusqueda = function () { ... } // Comentada, se usa la versión posterior 'buscarEmpleado'
 
     /**
      * Agrega un nuevo empleado al array si la cédula no existe.
@@ -525,7 +502,6 @@
         limpiarInfoRol(); // Limpia la interfaz después de guardar
     }
 
-    // === Lógica de Vistas (Navegación y Tablas) ===
 
     /**
      * Muestra la sección de Empleado y oculta las demás.

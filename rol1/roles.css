@@ -1,0 +1,178 @@
+/* roles.css - Versión Mejorada */
+
+body {
+    background-color: #f4f7f4; /* Un gris muy claro que resalta el verde */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navegación */
+.menu {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-bottom: 3px solid #217023;
+}
+
+.contenedorBoton {
+    display: flex;
+    justify-content: center;
+    margin: 0 10px;
+}
+
+/* Layout Principal */
+.principal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 30px auto;
+    gap: 20px;
+}
+
+.area {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Títulos y Campos */
+.titulo {
+    color: #217023;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.ingresoDatos {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.tituloCampo {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    margin-right: 15px;
+    text-align: right;
+    width: 120px;
+}
+
+/* Inputs y Cajas de Info */
+.cajaTexto, .info {
+    padding: 8px 12px;
+    border: 1.5px solid #217023;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 200px;
+    transition: all 0.3s ease;
+}
+
+.cajaTexto:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(33, 112, 35, 0.4);
+    border-color: #1a5a1c;
+}
+
+.info {
+    background-color: #f9f9f9;
+    color: #212121;
+    min-height: 18px;
+    display: flex;
+    align-items: center;
+}
+
+/* Botones */
+.botones {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.estiloBoton {
+    background-color: #217023;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+    min-width: 110px;
+}
+
+.estiloBoton:hover {
+    background-color: #ffffff;
+    color: #217023;
+    border: 1px solid #217023;
+}
+
+.estiloBoton:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    border: none;
+}
+
+/* Errores */
+.error {
+    color: #d32f2f;
+    font-size: 11px;
+    font-style: italic;
+    margin-top: 4px;
+    text-align: left;
+}
+
+/* Tabla */
+.areaTabla {
+    margin-top: 30px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th {
+    background-color: #217023;
+    color: white;
+    padding: 12px;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+/* Efecto Cebra solicitado */
+tbody tr:nth-child(odd) {
+    background-color: #f2f2f2; /* Un gris muy tenue para no chocar con el verde */
+}
+
+tbody tr:hover {
+    background-color: #e8f5e9; /* Resaltado verde muy claro al pasar el mouse */
+}

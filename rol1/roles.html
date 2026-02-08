@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="utilitarios.js"></script>
+    <script src="roles.js"></script>
+    <link rel="stylesheet" type="text/css" href="roles.css">
+    <meta charset="utf-8">
+</head>
+<body onload="mostrarOpcionRol();"> <div class="menu">
+        <input type="button" value="EMPLEADO" class="estiloBoton" onclick="mostrarOpcionEmpleado();" />
+        <input type="button" value="ROL" class="estiloBoton" onclick="mostrarOpcionRol();" />
+        <input type="button" value="RESUMEN" class="estiloBoton" onclick="mostrarOpcionResumen();" />
+    </div>
+
+    <div id="divEmpleado" style="display:none;">
+        <div class="principal">
+            <div class="area">
+                <input type="text" id="txtBusquedaCedula" />
+                <input type="button" value="BUSCAR" onclick="ejecutarBusqueda();" />
+            </div>
+            <div class="area">
+                <input type="text" id="txtCedula" disabled />
+                <input type="text" id="txtNombre" disabled />
+                <input type="text" id="txtApellido" disabled />
+                <input type="text" id="txtSueldo" disabled />
+                <div class="botones">
+                    <input type="button" value="NUEVO" onclick="ejecutarNuevo();" />
+                    <input type="button" value="GUARDAR" id="btnGuardar" onclick="guardar();" disabled />
+                    <input type="button" value="LIMPIAR" onclick="limpiar();" />
+                </div>
+                <div id="tablaEmpleados"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="divRol" style="display:none;">
+        <div class="principal">
+            <div class="area">
+                <input type="text" id="txtCedulaRol" />
+                <input type="button" value="BUSCAR" onclick="buscarPorRol();" />
+                <div>CEDULA: <span id="infoCedula"></span></div>
+                <div>NOMBRE: <span id="infoNombre"></span></div>
+                <div>SUELDO: <span id="infoSueldo"></span></div>
+                <input type="text" id="txtDescuento" />
+                <input type="button" value="CALCULAR" onclick="calcularRol();" />
+                <div>APORTE: <span id="infoAporte"></span></div>
+                <div>NETO: <span id="infoTotal"></span></div>
+                <input type="button" id="btnGuardarRol" value="GUARDAR ROL" onclick="guardarRol();" disabled />
+            </div>
+        </div>
+    </div>
+
+    <div id="divResumen" style="display:none;">
+        <div id="tablaResumen"></div>
+        <div>TOTAL APORTES IESS: <span id="totalAportes"></span></div>
+        <div>TOTAL NOMINA: <span id="totalNomina"></span></div>
+    </div>
+</body>
+</html>

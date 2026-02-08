@@ -165,39 +165,28 @@ determinarMayor = function (persona1, persona2) {
 // FUNCIÓN: Demostrar la creación de objetos, acceso a atributos y lógica de comparación
 // ====================================================================
 crearProducto = function() {
-    // 1. paso 1: Creación del objeto 'producto1' (Pantalón).
     let producto1 = {
         nombre: "pantalon", // Atributo nombre (String).
         precio: 50.30,      // Atributo precio (Number).
         stock: 10           // Atributo stock (Number).
     };
-
-    // 2. paso 2: Creación del objeto 'producto2' (Cocina).
-    let producto2 = {
+    let producto2 = {    // 2. paso 2: Creación del objeto 'producto2' (Cocina).
         nombre: "cocina",   // Atributo nombre (String).
         precio: 550.75,     // Atributo precio (Number).
         stock: 15           // Atributo stock (Number).
     };
-
-    // 3. paso 3: Acceder y mostrar el valor del atributo 'nombre' de producto1 en la consola.
-    console.log("Nombre producto 1:", producto1.nombre); // Salida: "Nombre producto 1: pantalon"
-
-    // 4. paso 4: Acceder y mostrar el valor del atributo 'precio' de producto2 en la consola.
-    console.log("Precio producto 2:", producto2.precio); // Salida: "Precio producto 2: 550.75"
-
-    // 5. paso 5: Iniciar una comprobación condicional (if-else if-else) para comparar el stock.
+    console.log("Nombre producto 1:", producto1.nombre);     // 3. paso 3: Acceder y mostrar el valor del atributo 'nombre' de producto1 en la consola.
+// Salida: "Nombre producto 1: pantalon"
+    console.log("Precio producto 2:", producto2.precio);     // 4. paso 4: Acceder y mostrar el valor del atributo 'precio' de producto2 en la consola.
+// Salida: "Precio producto 2: 550.75"
     if (producto1.stock > producto2.stock) {
-        // Se ejecuta si el stock de producto1 (10) es mayor que el de producto2 (15). (Falso)
-        console.log("Producto 1 tiene mayor stock");
+        console.log("Producto 1 tiene mayor stock");        // Se ejecuta si el stock de producto1 (10) es mayor que el de producto2 (15). (Falso)
     } else if (producto2.stock > producto1.stock) {
-        // Se ejecuta si el stock de producto2 (15) es mayor que el de producto1 (10). (Verdadero)
-        console.log("Producto 2 tiene mayor stock"); // Salida: "Producto 2 tiene mayor stock"
+        console.log("Producto 2 tiene mayor stock");         // Se ejecuta si el stock de producto2 (15) es mayor que el de producto1 (10). (Verdadero)
+// Salida: "Producto 2 tiene mayor stock"
     } else {
-        // Se ejecuta si ambos stocks son iguales.
-        console.log("Ambos productos tienen el mismo stock");
+        console.log("Ambos productos tienen el mismo stock");        // Se ejecuta si ambos stocks son iguales.
     }
-
-    // Termina la ejecución de la función. El 'return' no devuelve ningún valor explícito.
     return
 }
 
