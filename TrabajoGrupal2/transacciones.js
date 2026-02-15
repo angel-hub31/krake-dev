@@ -10,7 +10,6 @@ cargar=function(){
     ocultarComponente("contenedorTransacciones");
     
 }
-
 /*
     Busca la cuenta en el arreglo en función del número de cuenta,
     si existe retorna el objeto cuenta, caso contrario retorna null. 

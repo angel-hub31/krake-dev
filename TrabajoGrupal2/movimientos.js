@@ -10,7 +10,6 @@ cargar=function(){
     mostrarComponente("divMovimientos");
     ocultarComponente("divCuentas");
     ocultarComponente("divTransacciones");
-    
 }
 
 filtrarMovimientos=function(numeroCuenta){

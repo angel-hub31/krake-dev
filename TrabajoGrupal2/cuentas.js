@@ -23,7 +23,6 @@ mostrarCuentas=function(){
     tabla+="</table>";
  mostrarTextoHTML("tablaCuentas", tabla);
 
-
     /*
         Muestra en pantalla una tabla con la información de todas las cuentas del arreglo.
         Columnas: NUMERO CUENTA, NOMBRE, SALDO
