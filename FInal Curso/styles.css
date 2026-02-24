@@ -1,0 +1,174 @@
+/* ==============================
+   Logos fijos a los lados
+   ============================== */
+#logo-izquierdo,
+#logo-derecho {
+  position: fixed; /* Fija los logos en la pantalla, no se mueven al hacer scroll */
+  top: 50%;        /* Centra verticalmente en la pantalla */
+  transform: translateY(-50%); /* Ajusta para que el centro del logo quede alineado */
+  width: 60px;     /* Tamaño del logo */
+  height: auto;    /* Mantiene proporción original */
+  z-index: 1000;   /* Se asegura de que esté sobre otros elementos */
+  transition: transform 0.3s; /* Animación suave si se aplica algún efecto hover */
+}
+
+#logo-izquierdo {
+  left: 10px; /* Se posiciona a la izquierda con un pequeño margen */
+}
+
+#logo-derecho {
+  right: 10px; /* Se posiciona a la derecha con un pequeño margen */
+}
+
+#logo-izquierdo:hover,
+#logo-derecho:hover {
+  transform: translateY(-50%) scale(1.1); /* Efecto ligero de agrandamiento al pasar el mouse */
+}
+
+/* ==============================
+   Evitar que el contenido quede debajo de los logos
+   ============================== */
+body {
+  padding-left: 80px;  /* Deja espacio a la izquierda para el logo */
+  padding-right: 80px; /* Deja espacio a la derecha para el logo */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipografía moderna y limpia */
+  background: #fefefe; /* Fondo blanco pero un poquito cálido */
+  color: #222; /* Texto ligeramente oscuro, más suave que negro puro */
+  margin: 0; /* Quita margen por defecto del navegador */
+  padding-top: 20px;
+  padding-bottom: 20px;
+  line-height: 1.5; /* Hace que el texto respire */
+}
+
+/* ==============================
+   Menú
+   ============================== */
+.menu {
+  display: flex;         /* Flexbox para alinear los botones */
+  justify-content: center; /* Centra horizontalmente */
+  gap: 12px;             /* Espacio entre botones */
+  margin-bottom: 20px;   /* Separación de la sección siguiente */
+}
+
+.menu button {
+  padding: 8px 16px;         /* Más cómodo de hacer clic */
+  cursor: pointer;           /* Muestra que es clickeable */
+  border-radius: 5px;        /* Bordes redondeados suaves */
+  background: #007BFF;       /* Color azul moderno */
+  color: white;              /* Texto blanco */
+  border: 1px solid #007BFF; /* Borde del mismo color que el fondo */
+  transition: all 0.2s ease; /* Transición suave para hover */
+}
+
+.menu button:hover {
+  background: #0056b3; /* Azul más oscuro al pasar mouse */
+  border-color: #0056b3;
+}
+
+/* ==============================
+   Contenedores de sección
+   ============================== */
+.seccion {
+  max-width: 900px;            /* Limita ancho máximo */
+  margin: 0 auto 30px;         /* Centrado horizontal y margen inferior */
+  padding: 20px;               /* Espacio interno */
+  border-radius: 8px;          /* Bordes redondeados suaves */
+  background: #ffffff;         /* Fondo blanco */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* Sombra ligera para dar profundidad */
+  border: 1px solid #e0e0e0;  /* Borde gris claro */
+}
+
+/* ==============================
+   Títulos
+   ============================== */
+h2 {
+  margin-bottom: 12px;   /* Separación inferior */
+  color: #333;           /* Tono gris oscuro */
+  font-size: 1.5rem;     /* Tamaño de título agradable */
+}
+
+/* ==============================
+   Campos de formulario
+   ============================== */
+.campo {
+  margin-bottom: 12px; /* Espacio entre campos */
+}
+
+label {
+  display: block;       /* Cada etiqueta ocupa línea completa */
+  margin-bottom: 6px;   /* Separación de input */
+  font-weight: 600;     /* Más legible */
+  color: #555;          /* Gris medio */
+}
+
+input,
+textarea,
+button {
+  font-size: 14px;
+  padding: 8px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box; /* Incluye padding en el ancho total */
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: all 0.2s ease; /* Animación suave para focus */
+}
+
+input:focus,
+textarea:focus {
+  border-color: #007BFF; /* Cambia borde al seleccionar */
+  outline: none;         /* Quita borde por defecto del navegador */
+  box-shadow: 0 0 5px rgba(0,123,255,0.3); /* Luz azul suave */
+}
+
+/* ==============================
+   Botones
+   ============================== */
+button {
+  background: #28a745;    /* Verde agradable */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: #218838;    /* Verde más oscuro al pasar mouse */
+}
+
+/* ==============================
+   Tablas
+   ============================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+thead {
+  background: #007BFF; /* Fondo azul para encabezado */
+  color: white;
+}
+
+tbody tr:nth-child(even) {
+  background: #f9f9f9; /* Rayas suaves para filas pares */
+}
+
+/* ==============================
+   Mensajes de error
+   ============================== */
+.error {
+  color: #dc3545;      /* Rojo moderno */
+  font-size: 12px;
+  font-style: italic;
+  margin-top: 2px;
+}
